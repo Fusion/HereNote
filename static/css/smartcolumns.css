@@ -1,0 +1,61 @@
+.smartcolumns {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-family:  Arial, Verdana, Helvetica, sans-serif;
+    line-height: 1.6em;
+}
+.smartcolumns img {border: none;}
+.smartcolumns a {
+    color: #777;
+}
+.smartcolumns * {margin: 0; padding: 0;}
+.smartcolumns h1,.smartcolumns h2{ font-weight: normal; margin: 0px 0; padding: 4px 0;}
+.smartcolumns h1 {
+    font-size: 4em;
+    padding: 15px 5%;
+    margin: 0 auto;
+    color: #777;
+    line-height: 1em;
+    border-bottom: 1px solid #1b140e;
+}
+.smartcolumns .container {
+    padding: 10px 5%;
+}
+.smartcolumns ul.column{
+    width: 100%;
+    padding: 0;
+    margin: 10px 0 50px;
+    list-style: none;
+}
+.smartcolumns ul.column li {
+    float: left;
+    width: 233px;
+    padding: 0;
+    margin: 5px 0;
+    display: inline;
+}
+.smartcolumns .block {
+    height: 455px;
+    font-size: 1em;
+    margin-right: 10px;
+    padding: 20px;
+    background: #ffffff;
+    -moz-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+.smartcolumns .block h2 {
+    font-size: 1.5em;
+}
+.smartcolumns .block img {
+    width: 89%;
+    padding: 5%;
+    margin: 0 auto;
+    background:#fff;
+    -ms-interpolation-mode: bicubic;
+    display: block;
+    -moz-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    -webkit-border-radius: 3px;
+}

@@ -1,0 +1,3 @@
+[submodule "thirdparty/src/highlight"]
+	path = thirdparty/src/highlight
+	url = git://github.com/isagalaev/highlight.js.git

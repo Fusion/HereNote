@@ -1,0 +1,15 @@
+RewriteEngine on
+
+RewriteRule ^blog/([A-Za-z0-9-]+)/?$ index.php?blog=$1 [NC,L]
+
+RewriteRule ^refdirect/([A-Za-z0-9-]+)/?$ index.php?refdirect=$1 [NC,L]
+
+RewriteRule ^assets/(.*)$ index.php?asset=$1 [NC,L]
+
+RewriteCond %{QUERY_STRING} q=([^&]+)
+RewriteRule ^search/$ /search/%1 [L,R=301,NC]
+RewriteRule ^search/(.*)$ https://www.google.com/?q=$1+site:nexus.zteo.com [L,NC]
+
+RewriteRule ^([0-9][0-9][0-9][0-9]/.*)/?$ index.php?rewrite=$1 [NC,L]
+
+RewriteRule ^([A-Za-z0-9-]+)/?$ index.php?page=$1 [NC,L]
