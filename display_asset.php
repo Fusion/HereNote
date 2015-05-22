@@ -6,7 +6,7 @@
         $protocol = 'http';
     }
     $redirect = 'Location: ' . $protocol . '://' . $_SERVER['HTTP_HOST'] . '/' . $template->path('assets/' . $_GET['asset']);
-    header($redirect, true, 302);
+    header($redirect, true, ($config['mode'] == 'dev' ? 302 : 301));
     // Note: modern browsers should understand simply starting our url with '//'
     exit(0);
 ?>

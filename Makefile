@@ -6,6 +6,9 @@ config.php.inc:
 	@cat config.php | sed  "s/'api_key' => '.*'/'api_key' => ''/g" | sed "s/'user_id' => '.*'/'user_id' => ''/g" > config.php.inc
 
 deps:
+	deps_updated
+
+deps_updated:
 	@git submodule update --init --recursive
 	@if [ ! -d "thirdparty/highlight" ]; then mkdir thirdparty/highlight; fi
 	@if [ ! -f "thirdparty/highlight/highlight.js" ]; then cp thirdparty/src/highlight/src/highlight.js thirdparty/highlight/highlight.js; fi
