@@ -1,0 +1,19 @@
+blog_blogpost_categories"
+blogpost_id" integer NOT NULL
+"blogcategory_id" integer NOT NULL
+
+"blog_blogcategory
+title
+id
+slug
+
+
+# APIs
+
+## Google+
+
+* Go to https://console.developers.google.com/ and enable G+ API
+* Under Credentials, grab server API key
+* In G+, click 'profile' then any of my posts' link to get my ID
+* Now, feed link is https://www.googleapis.com/plus/v1/people/<my ID>/activities/public?key=<API key>
+
