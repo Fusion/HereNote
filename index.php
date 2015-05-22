@@ -1,6 +1,8 @@
 <?php
 error_reporting(E_ALL);
 
+// If possible, please relocate config.php outside your web directory and update
+// the following line accordingly.
 require './config.php';
 
 $db = new SQLite3($config['db_file']);
@@ -18,6 +20,7 @@ if(!empty($argv)) {
     );
 }
 
+// Return plain english time delta based on (now - $timestamp)
 function format_ago($timestamp) {
     $periods = array("second", "minute", "hour", "day", "week", "month", "year", "decade");
     $lengths = array("60","60","24","7","4.35","12","10");
@@ -41,6 +44,10 @@ function format_ago($timestamp) {
     }
     return "$txt ago";
 }
+
+// ---------------------------------------------------------------------------
+// A few delegates, just for cleanliness.
+// ---------------------------------------------------------------------------
 
 function display_header($template) {
     $template->header('header');
@@ -68,17 +75,25 @@ function display_page($db, $template) {
     display_footer($template);
 }
 
+// To count how many times an asset was downloaded
 function display_refdirect($db, $template) {
     require 'display_refdirect.php';
 }
 
+// Rewrite an asset's path to mask actual theme path
 function display_asset($db, $template, $config) {
     require 'display_asset.php';
 }
 
+// Rewrite link based on db entry: migrated blog entries
+// do not lose their precious permalink.
 function display_rewrite($db, $template) {
     require 'display_rewrite.php';
 }
+
+// ---------------------------------------------------------------------------
+// Routes + Templating
+// ---------------------------------------------------------------------------
 
 require 'display_template.php';
 $template = new Template($config['theme']);

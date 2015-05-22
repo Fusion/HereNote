@@ -1,4 +1,8 @@
 <?php
+// ---------------------------------------------------------------------------
+// This class handles very basic template management
+// ---------------------------------------------------------------------------
+
 class Template {
     function __construct($theme = 'bare') {
         $this->theme = $theme;

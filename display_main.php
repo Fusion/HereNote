@@ -1,4 +1,8 @@
 <?php
+// ---------------------------------------------------------------------------
+// Display blog's main page
+// ---------------------------------------------------------------------------
+
 $template->view('main');
 $post_count_query = $db->query("SELECT COUNT(*) AS count FROM blog_blogpost");
 $row = $post_count_query->fetchArray();
