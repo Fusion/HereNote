@@ -1,3 +1,6 @@
 [submodule "thirdparty/src/highlight"]
 	path = thirdparty/src/highlight
 	url = git://github.com/isagalaev/highlight.js.git
+[submodule "thirdparty/src/parsedown"]
+	path = thirdparty/src/parsedown
+	url = git://github.com/erusev/parsedown.git
