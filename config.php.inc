@@ -7,7 +7,8 @@ $config = array(
     'db_type'   => 'sqlite',
     'db_file'   => '/var/www/data/dev.db',
 
-    'theme'     => 'bare',
+    'theme'     => 'modern',
+    'per_page'  => 9,
 
     // Sensitive data. If possible, relocate your config file
     // outside your web directory.

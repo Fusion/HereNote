@@ -8,7 +8,7 @@ $template->view('blog');
 $slug = $db->escapeString($_GET['blog']);
 $row = $db->querySingle("SELECT * FROM blog_blogpost WHERE slug='" . $slug . "'", true);
 if(empty($row)) {
-    die("Ooops. 404 and all that :(");
+    die("Blog Ooops. 404 and all that :(");
 }
 
 if($row['format_type'] == 2) {
@@ -17,8 +17,8 @@ if($row['format_type'] == 2) {
     $content = $Parsedown->text($row['content']);
     $content2 = <<<EOB
 <script>
-$(document).ready(function() {
-  $('pre code').each(function(i, block) {
+jQuery(document).ready(function() {
+  jQuery('pre code').each(function(i, block) {
     hljs.highlightBlock(block);
   });
 });
@@ -29,8 +29,8 @@ else if($row['format_type'] == 1) {
     $content = $row['content'];
     $content2 = <<<EOB
 <script>
-$(document).ready(function() {
-  $('pre').each(function(i, block) {
+jQuery(document).ready(function() {
+  jQuery('pre').each(function(i, block) {
     hljs.highlightBlock(block);
   });
 });
@@ -56,6 +56,7 @@ default:
     $content_header = false;
 }
 
+
 $template->set('id', $row['id']);
 $template->set('title', $row['title']);
 $template->set('ref_url', $row['ref_url']);
@@ -64,4 +65,6 @@ $template->set('format_type', $row['format_type']);
 $template->set('content', $content . "\n" . $content2);
 $template->set('content_logo', $content_logo);
 $template->set('content_header', $content_header);
+$publish_date = strtotime($row['publish_date']);
+$template->set('formatted_publish_date', format_ago($publish_date));
 ?>

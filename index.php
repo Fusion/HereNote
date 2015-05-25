@@ -20,6 +20,17 @@ if(!empty($argv)) {
     );
 }
 
+// On demand theme preview
+// The cookie is here to propagate that value
+// to redirected assets
+if(!empty($_COOKIE['xxxtheme'])) {
+    $config['theme'] = alphanum_only($_COOKIE['xxxtheme']);
+}
+else if(!empty($_GET['theme'])) {
+    $config['theme'] = alphanum_only($_GET['theme']);
+    setcookie('xxxtheme', $config['theme'], time()+60*60);
+}
+
 // Return plain english time delta based on (now - $timestamp)
 function format_ago($timestamp) {
     $periods = array("second", "minute", "hour", "day", "week", "month", "year", "decade");
@@ -45,38 +56,42 @@ function format_ago($timestamp) {
     return "$txt ago";
 }
 
+function alphanum_only($txt) {
+    return preg_replace('/[^\da-z]/i', '', $txt);
+}
+
 // ---------------------------------------------------------------------------
 // A few delegates, just for cleanliness.
 // ---------------------------------------------------------------------------
 
-function display_header($template) {
-    $template->header('header');
+function display_header($db, $template, $config) {
+    require 'display_header.php';
 }
 
-function display_footer($template) {
-    $template->footer('footer');
+function display_footer($db, $template, $config) {
+    require 'display_footer.php';
 }
 
-function display_main($db, $template) {
-    display_header($template);
+function display_main($db, $template, $config) {
+    display_header($db, $template, $config);
     require 'display_main.php';
-    display_footer($template);
+    display_footer($db, $template, $config);
 }
 
-function display_blog($db, $template) {
-    display_header($template);
+function display_blog($db, $template, $config) {
+    display_header($db, $template, $config);
     require 'display_blog.php';
-    display_footer($template);
+    display_footer($db, $template, $config);
 }
 
-function display_page($db, $template) {
-    display_header($template);
+function display_page($db, $template, $config) {
+    display_header($db, $template, $config);
     require 'display_page.php';
-    display_footer($template);
+    display_footer($db, $template, $config);
 }
 
 // To count how many times an asset was downloaded
-function display_refdirect($db, $template) {
+function display_refdirect($db, $template, $config) {
     require 'display_refdirect.php';
 }
 
@@ -87,8 +102,22 @@ function display_asset($db, $template, $config) {
 
 // Rewrite link based on db entry: migrated blog entries
 // do not lose their precious permalink.
-function display_rewrite($db, $template) {
+function display_rewrite($db, $template, $config) {
     require 'display_rewrite.php';
+}
+
+// Poor man's dangerous full text search
+function display_search($db, $template, $config) {
+    display_header($db, $template, $config);
+    require 'display_search.php';
+    display_footer($db, $template, $config);
+}
+
+// Features under development
+function display_test($db, $template, $config) {
+    display_header($db, $template, $config);
+    require 'display_test.php';
+    display_footer($db, $template, $config);
 }
 
 // ---------------------------------------------------------------------------
@@ -99,22 +128,28 @@ require 'display_template.php';
 $template = new Template($config['theme']);
 
 if(!empty($_GET['blog'])) {
-    display_blog($db, $template);
+    display_blog($db, $template, $config);
 }
 else if(!empty($_GET['page'])) {
-    display_page($db, $template);
+    display_page($db, $template, $config);
 }
 else if(!empty($_GET['refdirect'])) {
-    display_refdirect($db, $template);
+    display_refdirect($db, $template, $config);
 }
 else if(!empty($_GET['asset'])) {
     display_asset($db, $template, $config);
 }
 else if(!empty($_GET['rewrite'])) {
-    display_rewrite($db, $template);
+    display_rewrite($db, $template, $config);
+}
+else if(!empty($_GET['search'])) {
+    display_search($db, $template, $config);
+}
+else if(!empty($_GET['test'])) {
+    display_test($db, $template, $config);
 }
 else {
-    display_main($db, $template);
+    display_main($db, $template, $config);
 }
 
 $template->render();

@@ -8,19 +8,18 @@ $post_count_query = $db->query("SELECT COUNT(*) AS count FROM blog_blogpost");
 $row = $post_count_query->fetchArray();
 $post_count = $row['count'];
 
-$MAX_ROWS = 10;
 if(empty($_GET['offset'])) {
     $offset = 0;
 }
 else {
     $offset = intval($_GET['offset']);
 }
-$prev_offset = $offset < 10 ? 0 : $offset - 10;
-$next_offset = $offset + 10 > $post_count ? $offset : $offset + 10;
+$prev_offset = $offset < $config['per_page'] ? 0 : $offset - $config['per_page'];
+$next_offset = $offset + $config['per_page'] > $post_count ? $offset : $offset + $config['per_page'];
 
 // Status: 2 == published
 $posts = array();
-$posts_list = $db->query("SELECT * FROM blog_blogpost WHERE status=2 ORDER BY publish_date DESC LIMIT $MAX_ROWS OFFSET $offset");
+$posts_list = $db->query("SELECT * FROM blog_blogpost WHERE status=2 ORDER BY publish_date DESC LIMIT {$config['per_page']} OFFSET $offset");
 while($row = $posts_list->fetchArray()) {
     $post = new stdClass();
     $post->id = format_ago($row['id']);
@@ -46,6 +45,7 @@ while($row = $posts_list->fetchArray()) {
     $posts[] = $post;
 }
 
+$template->set('is_home', true);
 $template->set('posts', $posts);
 $template->set('next_offset', $next_offset);
 $template->set('prev_offset', $prev_offset);

@@ -1,0 +1,2 @@
+<?php
+$template->footer('footer');
