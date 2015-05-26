@@ -16,6 +16,17 @@
 <script type='text/javascript' src='/assets/js/scripts-global.js'></script>
 <script type='text/javascript' src='/assets/js/skip-link-focus-fix.js'></script>
 
+<script>
+(function( $ ) {
+  $(function() {
+    var clip_path = 'http://www.archive.org/download/LakeOntario/LakeOntarioHdr.mp4';
+    var BV = new $.BigVideo({forceAutoplay:Modernizr.touch});
+    BV.init();
+    BV.show(clip_path, {ambient:true});
+  });
+})(jQuery);
+</script>
+
 </body>
 
 </html>

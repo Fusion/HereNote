@@ -21,11 +21,18 @@
         }
         $content_header = '<p>' . $content_header_1 . '<a href="' . $this->get('ref_url') . '">' . $this->get('content_header') .'</a></p>';
     }
+
+    // This is how we are going to add a class to non-img style links
+    $content = preg_replace('/<a((.*)href=(")?([a-zA-Z]+)"? ?(.*))>([^<](.*))<\/a>/', '<a$1 class="tipoverlay">$6</a>', $this->get('content'));
 ?>
 
 <?=$content_header?>
 
-<?=$this->get('content')?>
+<section class="link-tipoverlay">
+<p>
+<?=$content?>
+</p>
+</section>
 
 <div id="comments">
 <h3>Comments</h3>

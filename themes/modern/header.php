@@ -23,6 +23,19 @@ body{background-color:#1a1c1e}.site-banner-media:before,.banner-images:before {b
 <script type='text/javascript' src='/assets/js/jquery.js?ver=1.11.2'></script>
 <script type='text/javascript' src='/assets/js/jquery-migrate.min.js?ver=1.2.1'></script>
 <script src="/thirdparty/highlight/highlight.pack.js"></script>
+
+<!-- Big video -->
+<link rel='stylesheet'  href='/assets/css/jquery-ui.min.css' type='text/css' media='all' />
+<link rel='stylesheet'  href='/assets/css/video-js.min.css' type='text/css' media='all' />
+<link rel='stylesheet'  href='/assets/css/bigvideo.css' type='text/css' media='all' />
+
+<script src='/assets/js/custom-modernizr.js'></script>
+<script src='/assets/js/jquery.js'></script>
+<Script src='/assets/js/jquery-ui.min.js'></script>
+<Script src='/assets/js/video.js'></script>
+<script src='/assets/js/imagesloaded.pkgd.min.js'></script>
+<script src='/assets/js/bigvideo.js'></script>
+
 </head>
 
 
@@ -81,7 +94,8 @@ if($this->get('is_home')) {
 <form method="get" class="form-search" action="/search/">
 	<label for="search-field" class="screen-reader-text">Search</label>
 	<input type="search" value="" placeholder="Search field: type and press enter" name="q" class="search-field" id="search-field" />
-</form></div></div><button id="menu-toggle" class="menu-toggle" aria-controls="site-navigation" aria-expanded="false">Menu</button></nav><div class="site-branding"><h1 class="site-title logo type-text"><a href="http://nexus.zteo.com" title="The Nexus Home"><span class="text-logo">The Nexus</span></a></h1><h2 class="site-description">Chris' Den Of Confusion</h2></div>
+</form></div></div><button id="menu-toggle" class="menu-toggle" aria-controls="site-navigation" aria-expanded="false">Menu</button></nav>
+<div class="site-branding"><h1 class="site-title logo type-text"><a href="http://nexus.zteo.com" title="The Nexus Home"><span class="text-logo">The Nexus</span></a></h1><h2 class="site-description">Chris' Den Of Confusion</h2></div>
 <div id="site-banner" class="site-banner no-slider">
 
 	<div class="site-banner-inner">
