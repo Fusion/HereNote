@@ -56,8 +56,18 @@ default:
     $content_header = false;
 }
 
+if($user->can_edit) {
+    $template->set('edit_menu',
+        array(
+            array('id' => 'action_edit', 'icon' => 'edit', 'text' => 'Edit'),
+            array('id' => 'action_noop', 'icon' => 'cog', 'text' => 'Cog')
+        )
+    );
+}
+
 
 $template->set('id', $row['id']);
+$template->set('slug', $slug);
 $template->set('title', $row['title']);
 $template->set('ref_url', $row['ref_url']);
 $template->set('content_type', $row['content_type']);

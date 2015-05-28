@@ -9,6 +9,7 @@ class Template {
         $this->view = false;
         $this->header = false;
         $this->footer = false;
+        $this->user = false;
         $this->vars = array();
     }
 
@@ -26,6 +27,10 @@ class Template {
 
     function footer($footer) {
         $this->footer = $footer;
+    }
+
+    function set_user($user_obj) {
+        $this->user = $user_obj;
     }
 
     function set($name, $value) {

@@ -64,60 +64,93 @@ function alphanum_only($txt) {
 // A few delegates, just for cleanliness.
 // ---------------------------------------------------------------------------
 
-function display_header($db, $template, $config) {
+function display_header($db, $template, $config, $user) {
     require 'display_header.php';
 }
 
-function display_footer($db, $template, $config) {
+function display_footer($db, $template, $config, $user) {
     require 'display_footer.php';
 }
 
-function display_main($db, $template, $config) {
-    display_header($db, $template, $config);
+function display_main($db, $template, $config, $user) {
+    display_header($db, $template, $config, $user);
     require 'display_main.php';
-    display_footer($db, $template, $config);
+    display_footer($db, $template, $config, $user);
 }
 
-function display_blog($db, $template, $config) {
-    display_header($db, $template, $config);
+function display_blog($db, $template, $config, $user) {
+    display_header($db, $template, $config, $user);
     require 'display_blog.php';
-    display_footer($db, $template, $config);
+    display_footer($db, $template, $config, $user);
 }
 
-function display_page($db, $template, $config) {
-    display_header($db, $template, $config);
+function display_blog_edit($db, $template, $config, $user) {
+    display_header($db, $template, $config, $user);
+    require 'display_blog_edit.php';
+    display_footer($db, $template, $config, $user);
+}
+
+function display_page($db, $template, $config, $user) {
+    display_header($db, $template, $config, $user);
     require 'display_page.php';
-    display_footer($db, $template, $config);
+    display_footer($db, $template, $config, $user);
 }
 
 // To count how many times an asset was downloaded
-function display_refdirect($db, $template, $config) {
+function display_refdirect($db, $template, $config, $user) {
     require 'display_refdirect.php';
 }
 
 // Rewrite an asset's path to mask actual theme path
-function display_asset($db, $template, $config) {
+function display_asset($db, $template, $config, $user) {
     require 'display_asset.php';
 }
 
 // Rewrite link based on db entry: migrated blog entries
 // do not lose their precious permalink.
-function display_rewrite($db, $template, $config) {
+function display_rewrite($db, $template, $config, $user) {
     require 'display_rewrite.php';
 }
 
 // Poor man's dangerous full text search
-function display_search($db, $template, $config) {
-    display_header($db, $template, $config);
+function display_search($db, $template, $config, $user) {
+    display_header($db, $template, $config, $user);
     require 'display_search.php';
-    display_footer($db, $template, $config);
+    display_footer($db, $template, $config, $user);
 }
 
 // Features under development
-function display_test($db, $template, $config) {
-    display_header($db, $template, $config);
+function display_test($db, $template, $config, $user) {
+    display_header($db, $template, $config, $user);
     require 'display_test.php';
-    display_footer($db, $template, $config);
+    display_footer($db, $template, $config, $user);
+}
+
+// This little backdoor has to disappear ASAP
+function attempt_auth($db, $template, $config, $user) {
+    if($_GET['auth'] == $config['admin_key']) {
+        if($user->is_auth) {
+            $user->reset();
+            unset($_SESSION['user']);
+        }
+        else {
+            $user->auth('chris');
+            $_SESSION['user'] = $user;
+        }
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Session Management
+// ---------------------------------------------------------------------------
+
+require 'user.php';
+session_start();
+if(isset($_SESSION['user'])) {
+    $user = $_SESSION['user'];
+}
+else {
+    $user = new User();
 }
 
 // ---------------------------------------------------------------------------
@@ -128,29 +161,36 @@ require 'display_template.php';
 $template = new Template($config['theme']);
 
 if(!empty($_GET['blog'])) {
-    display_blog($db, $template, $config);
+    display_blog($db, $template, $config, $user);
+}
+else if(!empty($_GET['blog_edit'])) {
+    display_blog_edit($db, $template, $config, $user);
 }
 else if(!empty($_GET['page'])) {
-    display_page($db, $template, $config);
+    display_page($db, $template, $config, $user);
 }
 else if(!empty($_GET['refdirect'])) {
-    display_refdirect($db, $template, $config);
+    display_refdirect($db, $template, $config, $user);
 }
 else if(!empty($_GET['asset'])) {
-    display_asset($db, $template, $config);
+    display_asset($db, $template, $config, $user);
 }
 else if(!empty($_GET['rewrite'])) {
-    display_rewrite($db, $template, $config);
+    display_rewrite($db, $template, $config, $user);
 }
 else if(!empty($_GET['search'])) {
-    display_search($db, $template, $config);
+    display_search($db, $template, $config, $user);
 }
 else if(!empty($_GET['test'])) {
-    display_test($db, $template, $config);
+    display_test($db, $template, $config, $user);
 }
 else {
-    display_main($db, $template, $config);
+    if(!empty($_GET['auth'])) {
+        attempt_auth($db, $template, $config, $user);
+    }
+    display_main($db, $template, $config, $user);
 }
 
+$template->set_user($user);
 $template->render();
 ?>

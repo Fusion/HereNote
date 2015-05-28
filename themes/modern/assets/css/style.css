@@ -1986,9 +1986,9 @@ section a::after {
         transform: scale(1) translateY(-75%);
 }
 
-		.site-branding {
-			position: relative;
-			z-index: 1;
-		}
+.site-branding {
+    position: relative;
+    z-index: 1;
+}
 
 /* END OF FILE */

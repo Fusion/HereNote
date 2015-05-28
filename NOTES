@@ -1,11 +1,6 @@
-blog_blogpost_categories"
-blogpost_id" integer NOT NULL
-"blogcategory_id" integer NOT NULL
+# TODO
 
-"blog_blogcategory
-title
-id
-slug
+Remove all references to the first overlay attempt; the one that performs a transition of .page
 
 
 # APIs

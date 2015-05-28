@@ -14,6 +14,8 @@
 <link rel='stylesheet' id='wm-starter-css'  href='/assets/css/starter.css' type='text/css' media='all' />
 <link rel='stylesheet' id='wm-stylesheet-css'  href='/assets/css/style.css' type='text/css' media='all' />
 <link rel='stylesheet' id='wm-colors-css'  href='/assets/css/colors.css' type='text/css' media='all' />
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel='stylesheet' id='wm-colors-css'  href='/assets/css/overlay.css' type='text/css' media='all' />
 <style id='wm-colors-inline-css' type='text/css'>
 
 body{background-color:#1a1c1e}.site-banner-media:before,.banner-images:before {background:transparent;background:-webkit-linear-gradient(  top, rgba(26,28,30,0) 0%, #1a1c1e 100% );background:  linear-gradient( to bottom, rgba(26,28,30,0) 0%, #1a1c1e 100% );}.site-header,.site-header .social-links,.page-title,.taxonomy-description,.page-title,.error-404,.not-found {color:#ffffff;border-color:#ffffff;}a,.accent-color{color:#0aac8e}mark,ins,.highlight,pre:before,.pagination a,.pagination span,.label-sticky,.button,button,input[type="button"],input[type="reset"],input[type="submit"],.taxonomy-links a,.format-quote,.posts .format-quote,.format-status,.posts .format-status,.entry-content div.sharedaddy .sd-content ul li a.sd-button:not(.no-text),.post-navigation .nav-previous,.post-navigation .nav-next,.bypostauthor > .comment-body .comment-author:before,.comment-navigation a,.widget_calendar tbody a,.widget .tagcloud a:hover,body #infinite-handle span,.menu-toggle:before,.format-gallery .slick-prev,.format-gallery .slick-next {background-color:#0aac8e;color:#ffffff;}.entry-content div.sharedaddy .sd-content ul li a.sd-button:not(.no-text){color:#ffffff !important}mark,ins,.highlight {-webkit-box-shadow:.38em 0 0 #0aac8e, -.38em 0 0 #0aac8e;  box-shadow:.38em 0 0 #0aac8e, -.38em 0 0 #0aac8e;}.infinite-loader .spinner > div > div{background:#0aac8e !important}.label-sticky:before,.label-sticky:after {border-top-color:#0aac8e;border-right-color:#0aac8e;}input:focus,select:focus,textarea:focus,.widget .tagcloud a:hover{border-color:#0aac8e}.post-navigation .has-post-thumbnail:before {background:#0aac8e;background:-webkit-linear-gradient(  right, rgba(10,172,142,0) 19%, #0aac8e 81% );background:  linear-gradient( to left, rgba(10,172,142,0) 19%, #0aac8e 81% );}.post-navigation .nav-next.has-post-thumbnail:before {background:#0aac8e;background:-webkit-linear-gradient( left, rgba(10,172,142,0) 19%, #0aac8e 81% );background:  linear-gradient( to right, rgba(10,172,142,0) 19%, #0aac8e 81% );}body {font-family:'Fira Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;}h1, h2, h3, h4, h5, h6,.h1, .h2, .h3, .h4, .h5, .h6{font-family:'Fira Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif}.site-title{font-family:'Fira Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif}
@@ -51,8 +53,7 @@ if($this->get('is_home')) {
 }
 ?>
 
-
-<div id="page" class="hfeed site">
+<div id="page" class="page hfeed site">
 	<div class="site-inner">
 
 
