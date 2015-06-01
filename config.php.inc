@@ -20,5 +20,7 @@ $config = array(
         'github'        => array(
             'user_id' => ''
         ),
-    )
+    ),
+
+    'admin_key' => ''
 );

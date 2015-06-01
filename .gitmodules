@@ -4,3 +4,6 @@
 [submodule "thirdparty/src/parsedown"]
 	path = thirdparty/src/parsedown
 	url = git://github.com/erusev/parsedown.git
+[submodule "thirdparty/src/epiceditor"]
+	path = thirdparty/src/epiceditor
+	url = git://github.com/OscarGodson/EpicEditor.git
