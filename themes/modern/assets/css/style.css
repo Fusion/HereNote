@@ -1991,4 +1991,15 @@ section a::after {
     z-index: 1;
 }
 
+/* Editor */
+
+/* otherwise it is transparent! */
+.editor-wrapper {
+    background-color: white;
+}
+
+.editor-wrapper-focused {
+    border: 2px solid green;
+}
+
 /* END OF FILE */

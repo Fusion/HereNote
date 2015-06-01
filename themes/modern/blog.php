@@ -29,14 +29,14 @@
   <button><i class="fa fa-navicon"></i></button>
 </span>
 </span>
+
+<div class="menu-wrapper">
+
+    <ul class="navigation">
+        <li><a href="#" class="escape">X</a></li>
+      </ul>
+</div>
 <?php
-/*
-?>
-            <span class="cfr-menu entry-meta-element">
-                    <a href="#" class="trigger-overlay">Edit</a>
-            </span>
-<?php
-*/
     }
 ?>
         </div>
@@ -100,7 +100,35 @@ jQuery('.selector button').click(function(e) {
 jQuery('.selector li').click(function() {
     var action = jQuery(this).find('input').attr('id');
     if(action == 'action_edit') {
-        window.location = window.location + '/edit/';
+        window.location = window.location + 'edit/';
+    }
+    else if(action == 'action_source') {
+        jQuery('.menu-wrapper .navigation .dyn_item').remove();
+        jQuery('.menu-wrapper .navigation').append('<li class="dyn_item"><a href="#" class="clickable" id="choice_blog">Blog</a></li>');
+        jQuery('.menu-wrapper .navigation').append('<li class="dyn_item"><a href="#" class="clickable" id="choice_gplus">G+</a></li>');
+        jQuery('.menu-wrapper .navigation').append('<li class="dyn_item"><a href="#" class="clickable" id="choice_github">Github</a></li>');
+        jQuery('.menu-wrapper').addClass('show-menu');
+        jQuery('.menu-wrapper .navigation').fadeIn();
+        jQuery('.menu-wrapper .navigation li').addClass('small-padding');
+        jQuery(document).keydown(function(e) {
+            // ESCAPE key pressed
+            if (e.keyCode == 27) {
+                jQuery('.menu-wrapper').removeClass('show-menu');
+                jQuery('.menu-wrapper .navigation').hide();
+                jQuery('.menu-wrapper .navigation li').removeClass('small-padding');                
+            }
+        });
+        jQuery('.menu-wrapper .navigation .clickable').click(function(e) {
+            e.preventDefault();
+            ajax_send({
+                route: 'blog',
+                action: 'choose_source_type',
+                choice: e.toElement.id,
+                slug: '<?=$this->get('slug')?>'
+                }, function(success, data) {
+                    alert(data);
+            });
+        });
     }
 });
 

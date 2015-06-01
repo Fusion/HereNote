@@ -64,6 +64,10 @@ function alphanum_only($txt) {
 // A few delegates, just for cleanliness.
 // ---------------------------------------------------------------------------
 
+function ajax($db, $template, $config, $user) {
+    require 'ajax.php';
+}
+
 function display_header($db, $template, $config, $user) {
     require 'display_header.php';
 }
@@ -183,6 +187,9 @@ else if(!empty($_GET['search'])) {
 }
 else if(!empty($_GET['test'])) {
     display_test($db, $template, $config, $user);
+}
+else if(!empty($_GET['ajax'])) {
+    ajax($db, $template, $config, $user);
 }
 else {
     if(!empty($_GET['auth'])) {

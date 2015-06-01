@@ -40,6 +40,8 @@
 })(jQuery);
 </script>
 
+<?=$this->footer_extra?>
+
 </body>
 
 </html>

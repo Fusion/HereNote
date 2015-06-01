@@ -60,7 +60,9 @@ if($user->can_edit) {
     $template->set('edit_menu',
         array(
             array('id' => 'action_edit', 'icon' => 'edit', 'text' => 'Edit'),
-            array('id' => 'action_noop', 'icon' => 'cog', 'text' => 'Cog')
+            array('id' => 'action_unpublish', 'icon' => 'unlink', 'text' => 'Unpublish'),
+            array('id' => 'action_delete', 'icon' => 'eraser', 'text' => 'Delete'),
+            array('id' => 'action_source', 'icon' => 'bookmark-o', 'text' => 'Change Source'),
         )
     );
 }

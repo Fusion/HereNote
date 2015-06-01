@@ -38,6 +38,9 @@ body{background-color:#1a1c1e}.site-banner-media:before,.banner-images:before {b
 <script src='/assets/js/imagesloaded.pkgd.min.js'></script>
 <script src='/assets/js/bigvideo.js'></script>
 
+<script src='/static/js/cfr.js'></script>
+
+<?=$this->header_extra?>
 </head>
 
 
