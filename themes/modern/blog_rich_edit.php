@@ -6,30 +6,70 @@
     </div>
 </article>
 
+<style>
+#display_more-check {
+    display: none;
+} 
+
+#display_more-check:checked ~ div {
+    opacity: 1;
+    max-height: 100%;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    overflow: visible;
+    transform:scale(1);
+}
+
+.display_more-content {
+    opacity: 0;
+    max-height: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+    overflow: hidden;
+    transition: 0.5s;
+    transform:scale(0);
+}
+</style>
+
 <form id='edit_all' action='/blog/<?=$this->get('slug')?>/edit/' method='post'>
 <fieldset>
 <div id="comments" class="comments-area">
-       <div>
+    <div>
+        <h3 class="comment-reply-title">Content</h3>
+        <?=$this->get('editor')?>
+    </div>
+    <div> &nbsp; </div>
+    <div>
+        <input type="checkbox" name="display_more" id="display_more-check" />
+        <label for="display_more-check">Edit Title &amp; Description</label>
+        <div class="display_more-content">
+            <p></p>
             <h3 class="comment-reply-title">Post Title</h3>
             <input style="width:100%" name="title" value="<?=$this->get('title')?>" />
-       </div>
-       <div>
-            &nbsp;
-        <div>
-            <h3 class="comment-reply-title">Content</h3>
-            <?=$this->get('editor')?>
+            <p></p>
+            <h3 class="comment-reply-title">Front Page Description</h3>
+            <?=$this->get('editor_d')?>
         </div>
-       <div>
-            &nbsp;
-        <div>
-        <input id="html_content" type="hidden" name="content" value="" />
-        <div><span><a href='/blog/<?=$this->get('slug')?>/'>Cancel</a></span>&nbsp;<span style='float:right'><input type="submit" name="Save" /></span></div>
+    </div>
+    <div> &nbsp; </div>
+    <input id="html_content" type="hidden" name="content" value="" />
+    <input id="html_content_d" type="hidden" name="description" value="" />
+    <div>
+        <span>
+            <a href='/blog/<?=$this->get('slug')?>/'>Cancel</a>
+        </span>
+        &nbsp;
+        <span style='float:right'>
+            <input type="submit" name="Save" />
+        </span>
+    </div>
 </div>
 </fieldset>
 </form>
 
 <script>
 var tarea = init_editor_editor();
+var tarea_d = init_editor_editor_d();
 // this will be used to avoid losing focus when the toolbar is clicked
 var blurTimeoutAction = { showBlur: true, action: null };
 // *sigh* fpr whateever reason adding a class was not having any effect:
@@ -50,5 +90,6 @@ jQuery('.ql-editor').on('blur', function() {
 });
 jQuery('#edit_all').submit(function(e) {
     jQuery('#html_content').val(tarea.getHTML());
+    jQuery('#html_content_d').val(tarea_d.getHTML());
 });
 </script>

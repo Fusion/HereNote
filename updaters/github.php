@@ -46,7 +46,7 @@ foreach ($feed as $item) {
 
   $source_id = $item->id;
   $slug = trim(substr(preg_replace('/\W+/i', '-', $item->payload->issue->title), 0, 199), '-');
-  $short_url = 'http://nexus.zteo.com/blog/'.$slug.'/';
+  $short_url = $config['site_root'].'/blob/'.$slug.'/';
   $title = $item->payload->issue->title;
   $published = $item->payload->issue->created_at;
   $body = str_replace("\r\n", "\n", str_replace("\0",'',$item->payload->issue->body));

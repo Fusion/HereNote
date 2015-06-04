@@ -3,6 +3,7 @@ $config = array(
     // When running in dev mode, some behaviors change. For instance,
     // page redirects are temporary rather than permanent
     'mode'      => 'dev',
+    'url_root' => '/',
 
     'db_type'   => 'sqlite',
     'db_file'   => '/var/www/data/dev.db',

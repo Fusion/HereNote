@@ -79,4 +79,5 @@ $template->set('content_logo', $content_logo);
 $template->set('content_header', $content_header);
 $publish_date = strtotime($row['publish_date']);
 $template->set('formatted_publish_date', format_ago($publish_date));
+$template->set('disqus_shortname', $config['thirdparty']['disqus']['shortname']);
 ?>

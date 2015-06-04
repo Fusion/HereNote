@@ -15,14 +15,18 @@ else {
         $content = str_replace(
             "\xc2\xa0", ' ', str_replace(
                 "\x0d\x0a", "\x0a", $_POST['content']));
+        $description = str_replace(
+            "\xc2\xa0", ' ', str_replace(
+                "\x0d\x0a", "\x0a", $_POST['description']));
         if(empty($title)) {
             // pass
         }
         else {
-            $stmt = $db->prepare("UPDATE blog_blogpost SET title=:title, content=:content WHERE slug=:slug");
+            $stmt = $db->prepare("UPDATE blog_blogpost SET title=:title, content=:content, description=:description WHERE slug=:slug");
             $stmt->bindValue(':slug', $slug);
             $stmt->bindValue(':title', $title);
             $stmt->bindValue(':content', $content);
+            $stmt->bindValue(':description', $description);
             $stmt->execute();
         }
     }
@@ -44,7 +48,9 @@ else {
         require 'display_rich_editor.php';
         $template->set('slug', $slug);
         $template->set('title', $row['title']);
+        $template->set('description', $row['description']);
         $template->set('editor', get_editor_html('editor', $row['content']));
+        $template->set('editor_d', get_editor_html('editor_d', $row['description']));
         $template->header_append(get_editor_header());
     break;
     case 2:
@@ -52,7 +58,9 @@ else {
         require 'display_markdown_editor.php';
         $template->set('slug', $slug);
         $template->set('title', $row['title']);
+        $template->set('description', $row['description']);
         $template->set('editor', get_editor_html('editor', $row['content']));
+        $template->set('editor_d', get_editor_html('editor_d', $row['description']));
         $template->header_append(get_editor_header());
     break;
     }

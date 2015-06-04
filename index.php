@@ -163,6 +163,9 @@ else {
 
 require 'display_template.php';
 $template = new Template($config['theme']);
+$template->set_root($config['site_root']);
+$template->set_name($config['site_name']);
+$template->set_desc($config['site_desc']);
 
 if(!empty($_GET['blog'])) {
     display_blog($db, $template, $config, $user);

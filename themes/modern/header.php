@@ -6,7 +6,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 <link rel="profile" href="http://gmpg.org/xfn/11" />
-<title>The Nexus</title>
+<title><?=$this->site_title?></title>
 <meta name='robots' content='noindex,follow' />
 <link rel='stylesheet' id='wm-google-fonts-css'  href='//fonts.googleapis.com/css?family=Fira+Sans%3A400%2C300&#038;ver=1.4.4#038;subset' type='text/css' media='all' />
 <link rel='stylesheet' id='wm-genericons-css'  href='/assets/css/genericons.css' type='text/css' media='all' />
@@ -62,7 +62,7 @@ if($this->get('is_home')) {
 
 <header id="masthead" class="site-header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
 
-<nav id="site-navigation" class="main-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement"><span class="screen-reader-text">The Nexus Site Navigation</span><a class="skip-link screen-reader-text" href="#content">Skip to content</a><div class="main-navigation-inner"><div class="menu"><ul>
+<nav id="site-navigation" class="main-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement"><span class="screen-reader-text"><?=$this->site_title?>: Navigation</span><a class="skip-link screen-reader-text" href="#content">Skip to content</a><div class="main-navigation-inner"><div class="menu"><ul>
 <li class="page_item page-item-2">
 <a href="/">Home</a>
 </li>
@@ -99,7 +99,7 @@ if($this->get('is_home')) {
 	<label for="search-field" class="screen-reader-text">Search</label>
 	<input type="search" value="" placeholder="Search field: type and press enter" name="q" class="search-field" id="search-field" />
 </form></div></div><button id="menu-toggle" class="menu-toggle" aria-controls="site-navigation" aria-expanded="false">Menu</button></nav>
-<div class="site-branding"><h1 class="site-title logo type-text"><a href="http://nexus.zteo.com" title="The Nexus Home"><span class="text-logo">The Nexus</span></a></h1><h2 class="site-description">Chris' Den Of Confusion</h2></div>
+<div class="site-branding"><h1 class="site-title logo type-text"><a href="<?=$this->site_root?>" title="<?=$this->site_title?> Home"><span class="text-logo"><?=$this->site_name?></span></a></h1><h2 class="site-description"><?=$this->site_desc?></h2></div>
 <div id="site-banner" class="site-banner no-slider">
 
 	<div class="site-banner-inner">

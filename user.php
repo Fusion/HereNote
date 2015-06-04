@@ -1,4 +1,8 @@
 <?php
+/*
+ * This is an extremely temporary implementation -- it is bad.
+ * Everything here is hardcoded.
+ */
 class User {
 
     function __construct() {

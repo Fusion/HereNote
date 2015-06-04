@@ -100,7 +100,7 @@ jQuery('.selector button').click(function(e) {
 jQuery('.selector li').click(function() {
     var action = jQuery(this).find('input').attr('id');
     if(action == 'action_edit') {
-        window.location = window.location + 'edit/';
+        window.location = window.location + '/edit/';
     }
     else if(action == 'action_source') {
         jQuery('.menu-wrapper .navigation .dyn_item').remove();
@@ -153,23 +153,18 @@ jQuery('.overlay-close').click(function() { toggleOverlay(); });
 
 
 <div id="disqus_thread"></div>
-<script>
-var disqus_config = function () {
-    this.page.remote_auth_s3 = '';
-    this.page.api_key = '';
-}
-</script>
-
-<script>
-    var disqus_developer = 'False' == 'True';
-    var disqus_url = '<?=$this->get('short_url')?>';
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = '<?=$this->get('disqus_shortname')?>';
     var disqus_title = '<?=$this->get('title')?>';
-    var disqus_identifier = 'BlogPost-<?=$this->get('id')?>';
-  (function() {
-   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-   dsq.src = 'http://nexuszteo.disqus.com/embed.js';
-   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  })();
+    var disqus_url = '<?=$this->get('short_url')?>';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
 </script>
 
 </div>

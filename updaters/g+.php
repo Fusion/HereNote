@@ -31,8 +31,8 @@ while ($row = $result->fetchArray(SQLITE3_NUM)) {
 
 $stmt = $db->prepare("INSERT INTO blog_blogpost(site_id,in_sitemap,user_id,status,gen_description,allow_comments,content_type,format_type,rating_sum,rating_count,rating_average,comments_count,keywords_string,source_id,slug,short_url,featured_image,title,content,description,publish_date,ref_url) VALUES(1,1,2,2,1,1,2,1,5,1,5,0,'',:sourceid,:slug,:shorturl,:featuredimage,:title,:content,:description,:publishdate,:refurl)");
 
-$API_KEY = $config['updaters']['github']['api_key'];
-$USER_ID = $config['updaters']['github']['user_id'];
+$API_KEY = $config['updaters']['g+']['api_key'];
+$USER_ID = $config['updaters']['g+']['user_id'];
 $API_URL = 'https://www.googleapis.com/plus/v1/people/' . $USER_ID . '/activities/public?key=' . $API_KEY;
 
 $MAX_ITEMS = 500;
@@ -159,7 +159,7 @@ foreach ($feed->items as $item) {
     ."\n\n";
 
   $slug = trim(substr(preg_replace('/\W+/i', '-', $title), 0, 199), '-');
-  $short_url = 'http://nexus.zteo.com/blog/'.$slug.'/';
+  $short_url = $config['site_root'].'/blob/'.$slug.'/';
 
   echo $slug."\n"
     .$source_id."\n"
