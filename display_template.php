@@ -73,6 +73,10 @@ class Template {
         return 'themes/' . $this->theme . '/' . $asset;
     }
 
+    function fragment($fragment_name) {
+        require $this->path($fragment_name . '.php');
+    }
+
     function render() {
         if($this->view === false) {
             return;
