@@ -10,12 +10,12 @@ $db = new SQLite3($config['db_file']);
 
 // First, load all source ids so that we do not have duplicates
 $existing_source_ids = array();
-$result = $db->query("SELECT source_id FROM blog_blogpost WHERE content_type=3");
+$result = $db->query("SELECT source_id FROM mae_posts WHERE content_type=3");
 while ($row = $result->fetchArray(SQLITE3_NUM)) {
   $existing_source_ids[$row[0]] = true;
 }
 
-$stmt = $db->prepare("INSERT INTO blog_blogpost(site_id,in_sitemap,user_id,status,gen_description,allow_comments,content_type,format_type,rating_sum,rating_count,rating_average,comments_count,keywords_string,source_id,slug,short_url,featured_image,title,content,description,publish_date,ref_url) VALUES(1,1,2,2,1,1,3,2,5,1,5,0,'',:sourceid,:slug,:shorturl,:featuredimage,:title,:content,:description,:publishdate,:refurl)");
+$stmt = $db->prepare("INSERT INTO mae_posts(site_id,in_sitemap,user_id,status,gen_description,allow_comments,content_type,format_type,rating_sum,rating_count,rating_average,comments_count,keywords_string,source_id,slug,short_url,featured_image,title,content,description,publish_date,ref_url) VALUES(1,1,2,2,1,1,3,2,5,1,5,0,'',:sourceid,:slug,:shorturl,:featuredimage,:title,:content,:description,:publishdate,:refurl)");
 
 $USER_ID = $config['updaters']['github']['user_id'];
 $API_URL = 'https://api.github.com/users/'.$USER_ID.'/events';

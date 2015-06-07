@@ -7,7 +7,7 @@ $template->header('header');
 
 $menu = array();
 
-$pages_list = $db->query("SELECT title,titles,slug,parent_id,id FROM pages_page where status=2");
+$pages_list = $db->query("SELECT title,titles,slug,parent_id,id FROM mae_pages where status=2");
 while($row = $pages_list->fetchArray()) {
     $page_id = '' . $row['id'];
     $parent_id = '' . $row['parent_id'];

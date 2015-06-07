@@ -6,7 +6,7 @@
 $template->view('page');
 
 $slug = $db->escapeString($_GET['page']);
-$row = $db->querySingle("SELECT titles,content FROM pages_page left join pages_richtextpage on id=page_ptr_id where slug='" . $slug . "'", true);
+$row = $db->querySingle("SELECT titles,content FROM mae_pages left join mae_pages_richtextpage on id=page_ptr_id where slug='" . $slug . "'", true);
 if(empty($row)) {
     die("Page Ooops. 404 and all that :(");
 }

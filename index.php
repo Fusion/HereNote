@@ -144,6 +144,24 @@ function attempt_auth($db, $template, $config, $user) {
     }
 }
 
+function update_setting($db, $template, $config, $user) {
+    $action = $_GET['setting'];
+    switch($action) {
+        case 'display':
+            if(!empty($_GET['show'])) {
+                switch($_GET['show']) {
+                    case 'unpublished':
+                        $user->set('display', 'unpublished', true);
+                    break;
+                    case 'published':
+                        $user->delete('display', 'unpublished');
+                    break;
+                }
+            }
+        break;
+    } 
+}
+
 // ---------------------------------------------------------------------------
 // Session Management
 // ---------------------------------------------------------------------------
@@ -197,6 +215,9 @@ else if(!empty($_GET['ajax'])) {
 else {
     if(!empty($_GET['auth'])) {
         attempt_auth($db, $template, $config, $user);
+    }
+    if(!empty($_GET['setting'])) {
+        update_setting($db, $template, $config, $user);
     }
     display_main($db, $template, $config, $user);
 }

@@ -102,6 +102,18 @@ jQuery('.selector li').click(function() {
     if(action == 'action_edit') {
         window.location = window.location + '/edit/';
     }
+    else if(action == 'action_publish_toggle') {
+        if(<?=$this->get('status')?> == 2)
+            var ajax_action = 'unpublish';
+        else
+            var ajax_action = 'publish';
+        ajax_send({
+            route: 'blog',
+            action: ajax_action,
+            slug: '<?=$this->get('slug')?>'
+            }, function(success, data) {
+        });
+    }
     else if(action == 'action_source') {
         jQuery('.menu-wrapper .navigation .dyn_item').remove();
         jQuery('.menu-wrapper .navigation').append('<li class="dyn_item"><a href="#" class="clickable" id="choice_blog">Blog</a></li>');
@@ -126,7 +138,6 @@ jQuery('.selector li').click(function() {
                 choice: e.toElement.id,
                 slug: '<?=$this->get('slug')?>'
                 }, function(success, data) {
-                    alert(data);
             });
         });
     }

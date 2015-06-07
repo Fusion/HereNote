@@ -6,7 +6,7 @@
 $template->view('blog');
 
 $slug = $db->escapeString($_GET['blog']);
-$row = $db->querySingle("SELECT * FROM blog_blogpost WHERE slug='" . $slug . "'", true);
+$row = $db->querySingle("SELECT * FROM mae_posts WHERE slug='" . $slug . "'", true);
 if(empty($row)) {
     die("Blog Ooops. 404 and all that :(");
 }
@@ -60,7 +60,7 @@ if($user->can_edit) {
     $template->set('edit_menu',
         array(
             array('id' => 'action_edit', 'icon' => 'edit', 'text' => 'Edit'),
-            array('id' => 'action_unpublish', 'icon' => 'unlink', 'text' => 'Unpublish'),
+            array('id' => 'action_publish_toggle', 'icon' => 'unlink', 'text' => 'Toggle Publish State'),
             array('id' => 'action_delete', 'icon' => 'eraser', 'text' => 'Delete'),
             array('id' => 'action_source', 'icon' => 'bookmark-o', 'text' => 'Change Source'),
         )
@@ -70,6 +70,7 @@ if($user->can_edit) {
 
 $template->set('id', $row['id']);
 $template->set('slug', $slug);
+$template->set('status', $row['status']);
 $template->set('title', $row['title']);
 $template->set('ref_url', $row['ref_url']);
 $template->set('content_type', $row['content_type']);

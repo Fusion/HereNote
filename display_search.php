@@ -16,11 +16,11 @@ else {
         $template->set('error_msg', 'Please enter at least 4 characters');
     } else {
         $results = array('pages' => array(), 'posts' => array());
-        $result_list = $db->query("SELECT title,slug FROM blog_blogpost where status=2 AND title like '%" . $search_term . "%' OR content like '%" . $search_term . "%'");
+        $result_list = $db->query("SELECT title,slug FROM mae_posts where status=2 AND title like '%" . $search_term . "%' OR content like '%" . $search_term . "%'");
         while($row = $result_list->fetchArray()) {
             $results['posts'][] = array('slug' => $row['slug'], 'title' => $row['title']);
         }
-        $result_list = $db->query("SELECT titles,slug FROM pages_page left join pages_richtextpage on id=page_ptr_id where status=2 AND content like '%" . $search_term . "%'");
+        $result_list = $db->query("SELECT titles,slug FROM mae_pages left join mae_pages_richtextpage on id=page_ptr_id where status=2 AND content like '%" . $search_term . "%'");
         while($row = $result_list->fetchArray()) {
             $results['pages'][] = array('slug' => $row['slug'], 'title' => $row['titles']);
         }

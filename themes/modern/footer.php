@@ -7,8 +7,12 @@
 
 
 <footer id="colophon" class="site-footer" itemscope itemtype="http://schema.org/WPFooter">
-<div class="site-footer-area footer-area-site-info"><div class="site-info-container"><div class="site-info" role="contentinfo">&copy; 2015 chris f. ravenscroft &mdash; powered by my hand rolled aggregation engine &mdash; <a href="https://wordpress.org/themes/modern/">(heavy) theme inspiration</a> &mdash; <?php if($this->user->is_auth) echo 'Hello, ' . $this->user->real_name . ' &mdash; ' ?><a href="#top" id="back-to-top" class="back-to-top">back to top &uarr;</a>
-</div></div></div>
+<div class="site-footer-area footer-area-site-info">
+    <div class="site-info-container">
+        <div class="site-info" role="contentinfo">&copy; 2015 chris f. ravenscroft &mdash; powered by my hand rolled aggregation engine &mdash; <a href="https://wordpress.org/themes/modern/">(heavy) theme inspiration</a> &mdash; <?php if($this->user->is_auth) echo 'Hello, ' . $this->user->real_name . ' &mdash; ' ?><?php if($this->user->get('display', 'unpublished')) echo '(showing unpublished) &mdash; ' ?><a href="#top" id="back-to-top" class="back-to-top">back to top &uarr;</a>
+        </div>
+    </div>
+</div>
 </footer>
 
 <div class="overlay overlay-contentscale">

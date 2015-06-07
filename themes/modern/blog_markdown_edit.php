@@ -1,7 +1,7 @@
 <article id="post-19" class="post-19 type-page status-publish format-standard hentry" itemscope itemprop="blogPost" itemtype="http://schema.org/BlogPosting">
     <div class="entry-inner">
         <header class="entry-header">
-            <h1 class="entry-title" itemprop="name">Editing: <span><?=$this->get('title')?></span></h1>
+            <h1 class="entry-title" itemprop="name">Editing: <span><?=$this->get('clean_title')?></span></h1>
         </header>
     </div>
 </article>
@@ -11,6 +11,7 @@
     display: none;
 }
 
+<?php if($this->get('new') !== true) { ?>
 #display_more-check:checked ~ div {
     opacity: 1;
     max-height: 100%;
@@ -28,6 +29,7 @@
     overflow: hidden;
     transition: 0.5s;
     transform:scale(0);
+<?php } ?>
 </style>
 
 <form id='edit_all' action='/blog/<?=$this->get('slug')?>/edit/' method='post'>
@@ -44,10 +46,13 @@
         <div class="display_more-content">
             <p></p>
             <h3 class="comment-reply-title">Post Title</h3>
-            <input style="width:100%" name="title" value="<?=$this->get('title')?>" />
+             <input style="width:100%" name="title" id="post_title" value="<?=$this->get('title')?>" />
             <p></p>
             <h3 class="comment-reply-title">Front Page Description</h3>
             <textarea style="width:100%" name="description"><?=$this->get('description')?></textarea>
+            <p></p>
+            <h3 class="comment-reply-title">Featured Image</h3>
+            <input style="width:100%" name="featured_image" id="featured_image" value="<?=$this->get('featured_image')?>" />
         </div>
     </div>
     <div> &nbsp; </div>
@@ -76,7 +81,12 @@ jQuery(tarea.getElement('editor').body).on('blur', function() {
     jQuery('#editor-editor iframe').css('border', '');
 });
 jQuery('#edit_all').submit(function(e) {
-    jQuery('#html_content').val(tarea.getElement('editor').body.innerText);
-    jQuery('#html_content_d').val(tarea.getElement('editor_d').body.innerText);
+    if(jQuery('#post_title').val() == '') {
+        e.preventDefault();
+    }
+    else {
+        jQuery('#html_content').val(tarea.getElement('editor').body.innerText);
+        jQuery('#html_content_d').val(tarea.getElement('editor_d').body.innerText);
+    }
 });
 </script>

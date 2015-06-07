@@ -25,5 +25,27 @@ class User {
         $this->can_edit = false;
     }
 
+    /* Session variables */
+
+    function set($space, $name, $value) {
+        if(!isset($_SESSION[$space]))
+            $_SESSION[$space] = array();
+
+        $_SESSION[$space][$name] = $value;
+    }
+
+    function delete($space, $name) {
+        if(!isset($_SESSION[$space]) || !isset($_SESSION[$space][$name]))
+            return;
+
+        unset($_SESSION[$space][$name]);
+    }
+
+    function get($space, $name) {
+        if(!isset($_SESSION[$space]) || !isset($_SESSION[$space][$name]))
+            return null;
+
+        return $_SESSION[$space][$name];
+    }
 }
 ?>
