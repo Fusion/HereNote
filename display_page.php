@@ -6,7 +6,7 @@
 $template->view('page');
 
 $slug = $db->escapeString($_GET['page']);
-$row = $db->querySingle("SELECT titles,content FROM mae_pages left join mae_pages_richtextpage on id=page_ptr_id where slug='" . $slug . "'", true);
+$row = $db->querySingle("SELECT titles,content,status FROM mae_pages left join mae_pages_richtextpage on id=page_ptr_id where slug='" . $slug . "'", true);
 if(empty($row)) {
     die("Page Ooops. 404 and all that :(");
 }
@@ -23,5 +23,7 @@ if($user->can_edit) {
 
 $content = str_replace('/refdirect/?obj=', '/refdirect/', $row['content']);
 
+$template->set('slug', $slug);
+$template->set('status', $row['status']);
 $template->set('title', $row['titles']);
 $template->set('content', $content);

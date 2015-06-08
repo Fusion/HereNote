@@ -12,6 +12,9 @@ else {
     case 'blog':
         require 'ajax/blog.php';
         break;
+    case 'page':
+        require 'ajax/page.php';
+        break;
     default:
         $success = false;
         $data = array();

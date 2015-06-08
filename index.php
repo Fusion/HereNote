@@ -100,6 +100,12 @@ function display_page($db, $template, $config, $user) {
     display_footer($db, $template, $config, $user);
 }
 
+function display_page_edit($db, $template, $config, $user) {
+    display_header($db, $template, $config, $user);
+    require 'display_page_edit.php';
+    display_footer($db, $template, $config, $user);
+}
+
 // To count how many times an asset was downloaded
 function display_refdirect($db, $template, $config, $user) {
     require 'display_refdirect.php';
@@ -193,6 +199,9 @@ else if(!empty($_GET['blog_edit'])) {
 }
 else if(!empty($_GET['page'])) {
     display_page($db, $template, $config, $user);
+}
+else if(!empty($_GET['page_edit'])) {
+    display_page_edit($db, $template, $config, $user);
 }
 else if(!empty($_GET['refdirect'])) {
     display_refdirect($db, $template, $config, $user);
