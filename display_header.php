@@ -27,4 +27,40 @@ foreach($menu as $id => $menu_item) {
     }
 }
 
+if($user->can_edit) {
+    if($user->get('display', 'unpublished')) {
+        $pub_switch = array(
+	    'slug' => $config['site_root'] . '?setting=display&show=published',
+            'title' => $config['site_root'] . 'published mode');
+    }
+    else {
+        $pub_switch = array(
+	    'slug' => '?setting=display&show=unpublished',
+            'title' => 'draft mode');
+    }
+    $menu[-1] = array(
+        'slug' => '#',
+        'title' => '+',
+        'children' => array(
+            0 => $pub_switch,
+            1 => array(
+                'slug' => 'blog/new_rich/edit',
+                'title' => 'new rich post'
+            ),
+            2 => array(
+                'slug' => 'blog/new_markdown/edit',
+                'title' => 'new markdown post'
+            ),
+            3 => array(
+                'slug' => 'new_rich/edit',
+                'title' => 'new rich page'
+            ),
+            4 => array(
+                'slug' => 'new_markdown/edit',
+                'title' => 'new markdown page'
+            ),
+	)
+    );
+}
+
 $template->set('main_menu', $menu);

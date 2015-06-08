@@ -78,9 +78,10 @@ if($this->get('is_home')) {
     <ul class='children'>
 <?php
             foreach($menu_item['children'] as $child) {
+                $ending_char = (false === strpos($child['slug'], '?') ? '/' : '');
 ?>
     <li class="page_item page-item-2">
-    <a href="/<?=$child['slug']?>/""><?=$child['title']?></a>
+    <a href="/<?=$child['slug']?><?=$ending_char?>"><?=$child['title']?></a>
     </li>
 <?php
             }
