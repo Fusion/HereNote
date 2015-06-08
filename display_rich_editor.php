@@ -88,6 +88,7 @@ return <<<EOB
       <span title="List" class="ql-format-button ql-list"></span>
       <span title="Bullet" class="ql-format-button ql-bullet"></span>
       <span class="ql-link ql-format-button"></span>
+      <span title="Image" class="ql-format-button ql-image"></span>
       <span class="ql-format-separator"></span>
       <select title="Text Alignment" class="ql-align">
         <option value="left" label="Left" selected=""></option>
@@ -122,6 +123,7 @@ function init_editor_{$prefix}() {
     '#{$prefix}-area', {
       modules: {
         'toolbar': { container: '#{$prefix}-toolbar' },
+        'image-tooltip': true,
         'link-tooltip': true
       },
     'theme': 'snow'});
