@@ -44,18 +44,22 @@ if($user->can_edit) {
         'children' => array(
             0 => $pub_switch,
             1 => array(
+                'slug' => 'pages/',
+                'title' => 'view pages'
+            ),
+            2 => array(
                 'slug' => 'blog/new_rich/edit',
                 'title' => 'new rich post'
             ),
-            2 => array(
+            3 => array(
                 'slug' => 'blog/new_markdown/edit',
                 'title' => 'new markdown post'
             ),
-            3 => array(
+            4 => array(
                 'slug' => 'new_rich/edit',
                 'title' => 'new rich page'
             ),
-            4 => array(
+            5 => array(
                 'slug' => 'new_markdown/edit',
                 'title' => 'new markdown page'
             ),
