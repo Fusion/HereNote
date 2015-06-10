@@ -4,6 +4,9 @@ RewriteRule ^blog/([A-Za-z0-9-_]+)/?$ index.php?blog=$1 [NC,L]
 RewriteRule ^blog/([A-Za-z0-9-_]+)/edit/?$ index.php?blog_edit=$1 [NC,L]
 RewriteRule ^([A-Za-z0-9-_]+)/edit/?$ index.php?page_edit=$1 [NC,L]
 
+RewriteRule ^pages/$ index.php?pages=yes [NC,L]
+RewriteRule ^pages/([0-9]+)$ index.php?pages=yes&offset=$1 [NC,L]
+
 RewriteRule ^refdirect/([A-Za-z0-9-_]+)/?$ index.php?refdirect=$1 [NC,L]
 
 RewriteRule ^assets/(.*)$ index.php?asset=$1 [NC,L]
@@ -16,4 +19,5 @@ RewriteRule ^search/(.*)$ index.php?search=$1 [L,NC]
 RewriteRule ^([0-9][0-9][0-9][0-9]/.*)/?$ index.php?rewrite=$1 [NC,L]
 RewriteRule ^blog/[0-9][0-9][0-9][0-9]/[0-9][0-9]/[0-9][0-9]/([A-Za-z0-9-_]+)/?$ /blog/$1/ [NC,L]
 
+RewriteRule ^([0-9]+)$ index.php?offset=$1 [NC,L]
 RewriteRule ^([A-Za-z0-9-_]+)/?$ index.php?page=$1 [NC,L]

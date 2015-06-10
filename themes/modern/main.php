@@ -38,10 +38,10 @@ if(!empty($post->featured_image)) {
 <div class="pagination">
 <ul>
 <li>
-    <a href="?offset=<?=$this->get('prev_offset')?>">&lt;</a>
+    <a href="<?=$this->get('prev_offset')?>">&lt;</a>
 </li>
 <li>
-    <a href="?offset=<?=$this->get('next_offset')?>">&gt;</a>
+    <a href="<?=$this->get('next_offset')?>">&gt;</a>
 </li>
 </ul>
 </div>

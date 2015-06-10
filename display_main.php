@@ -26,7 +26,6 @@ $posts = array();
 $posts_list = $db->query("SELECT * FROM mae_posts WHERE status{$status_str} ORDER BY publish_date DESC LIMIT {$config['per_page']} OFFSET $offset");
 while($row = $posts_list->fetchArray()) {
     $post = new stdClass();
-    $post->id = format_ago($row['id']);
 
     $publish_date = strtotime($row['publish_date']);
     $post->formatted_publish_date = format_ago($publish_date);

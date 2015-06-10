@@ -30,12 +30,12 @@ foreach($menu as $id => $menu_item) {
 if($user->can_edit) {
     if($user->get('display', 'unpublished')) {
         $pub_switch = array(
-	    'slug' => $config['site_root'] . '?setting=display&show=published',
-            'title' => $config['site_root'] . 'published mode');
+            'slug' => '?setting=display&show=published',
+            'title' => 'published mode');
     }
     else {
         $pub_switch = array(
-	    'slug' => '?setting=display&show=unpublished',
+            'slug' => '?setting=display&show=unpublished',
             'title' => 'draft mode');
     }
     $menu[-1] = array(
@@ -44,7 +44,7 @@ if($user->can_edit) {
         'children' => array(
             0 => $pub_switch,
             1 => array(
-                'slug' => 'pages/',
+                'slug' => 'pages',
                 'title' => 'view pages'
             ),
             2 => array(

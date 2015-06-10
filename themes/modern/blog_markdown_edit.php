@@ -60,7 +60,7 @@
     <input id="html_content_d" type="hidden" name="content_d" value="" />
     <div>
         <span>
-            <a href='/blog/<?=$this->get('slug')?>/'>Cancel</a>
+            <a href='<?=$this->get('parent_url')?>'>Cancel</a>
         </span>
         &nbsp;
         <span style='float:right'>

@@ -82,6 +82,12 @@ function display_main($db, $template, $config, $user) {
     display_footer($db, $template, $config, $user);
 }
 
+function display_pages($db, $template, $config, $user) {
+    display_header($db, $template, $config, $user);
+    require 'display_pages.php';
+    display_footer($db, $template, $config, $user);
+}
+
 function display_blog($db, $template, $config, $user) {
     display_header($db, $template, $config, $user);
     require 'display_blog.php';
@@ -220,6 +226,9 @@ else if(!empty($_GET['test'])) {
 }
 else if(!empty($_GET['ajax'])) {
     ajax($db, $template, $config, $user);
+}
+else if(!empty($_GET['pages'])) {
+    display_pages($db, $template, $config, $user);
 }
 else {
     if(!empty($_GET['auth'])) {

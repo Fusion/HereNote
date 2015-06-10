@@ -66,6 +66,7 @@ else {
                 'new' => true,
                 'clean_title' => 'New page',
                 'title' => '',
+                'parent_url' => $config['site_root'],
                 'content' => '');
         if($slug == 'new_rich')
             $row['format_type'] = 1;
@@ -77,6 +78,7 @@ else {
         if(empty($row)) {
             die("Blog-Edit Ooops. 404 and all that :(");
         }
+        $row['parent_url'] = $config['site_root'] . $slug .'/';
     }
 
     switch($row['format_type']) {
@@ -84,6 +86,7 @@ else {
         $template->view('page_rich_edit');
         require 'display_rich_editor.php';
         $template->set('slug', $slug);
+        $template->set('parent_url', $row['parent_url']);
         $template->set('id', $row['id']);
         $template->set('new', (!empty($row['new'])));
         $template->set('clean_title', isset($row['clean_title']) ? $row['clean_title'] : $row['title']);
@@ -95,6 +98,7 @@ else {
         $template->view('page_markdown_edit');
         require 'display_markdown_editor.php';
         $template->set('slug', $slug);
+        $template->set('parent_url', $row['parent_url']);
         $template->set('id', $row['id']);
         $template->set('new', (!empty($row['new'])));
         $template->set('clean_title', isset($row['clean_title']) ? $row['clean_title'] : $row['title']);
