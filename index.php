@@ -154,6 +154,7 @@ function display_test($db, $template, $config, $user) {
 
 // This little backdoor has to disappear ASAP
 function attempt_auth($db, $template, $config, $user) {
+/* Dead!
     if($_GET['auth'] == $config['admin_key']) {
         if($user->is_auth) {
             $user->reset();
@@ -164,6 +165,7 @@ function attempt_auth($db, $template, $config, $user) {
             $_SESSION['user'] = $user;
         }
     }
+*/
 }
 
 function update_setting($db, $template, $config, $user) {
@@ -241,8 +243,15 @@ else if(!empty($_GET['pages'])) {
     display_pages($db, $template, $config, $user);
 }
 else if(!empty($_GET['login'])) {
-    if(display_login($db, $template, $config, $user)) {
+    if($_GET['login'] == 'no') {
+        $user->reset();
+        unset($_SESSION['user']);
         display_main($db, $template, $config, $user);
+    }
+    else {
+        if(display_login($db, $template, $config, $user)) {
+            display_main($db, $template, $config, $user);
+        }
     }
 }
 else {

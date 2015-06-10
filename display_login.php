@@ -13,7 +13,11 @@ if(!empty($_POST['LogIn'])) {
     $stmt->bindValue(':login', $_POST['c_username']);
     $res = $stmt->execute();
     $row = $res->fetchArray();
-    $loggedIn = !strcmp($row['password'], Util::get_password_with_salt_hash($_POST['c_password'], $row['salt']));
+    if(!strcmp($row['password'], Util::get_password_with_salt_hash($_POST['c_password'], $row['salt']))) {
+        $loggedIn = true;
+        $user->auth($row['login'], $row['realname'], $row['can_edit']);
+        $_SESSION['user'] = $user;
+    }
 }
 if(!$loggedIn) {
     $template->view('login');

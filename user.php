@@ -9,13 +9,11 @@ class User {
         $this->reset();
     }
 
-    function auth($user_name) {
-        if($user_name == 'chris') {
-            $this->user_name = 'chris';
-            $this->real_name = 'Chris Ravenscroft';
-            $this->is_auth  = true;
-            $this->can_edit = true;
-        }
+    function auth($login, $realname, $can_edit) {
+        $this->user_name = $login;
+        $this->real_name = $realname;
+        $this->is_auth  = true;
+        $this->can_edit = $can_edit;
     }
 
     function reset() {

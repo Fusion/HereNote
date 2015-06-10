@@ -6,7 +6,7 @@
 $template->view('blog');
 
 $slug = $db->escapeString($_GET['blog']);
-$row = $db->querySingle("SELECT * FROM mae_posts WHERE slug='" . $slug . "'", true);
+$row = $db->querySingle("SELECT * FROM mae_posts LEFT JOIN mae_users ON mae_users.id=user_id WHERE slug='" . $slug . "'", true);
 if(empty($row)) {
     die("Blog Ooops. 404 and all that :(");
 }
@@ -72,6 +72,7 @@ $template->set('id', $row['id']);
 $template->set('slug', $slug);
 $template->set('status', $row['status']);
 $template->set('title', $row['title']);
+$template->set('realname', $row['realname']);
 $template->set('ref_url', $row['ref_url']);
 $template->set('content_type', $row['content_type']);
 $template->set('format_type', $row['format_type']);

@@ -20,6 +20,7 @@ RewriteRule ^([0-9][0-9][0-9][0-9]/.*)/?$ index.php?rewrite=$1 [NC,L]
 RewriteRule ^blog/[0-9][0-9][0-9][0-9]/[0-9][0-9]/[0-9][0-9]/([A-Za-z0-9-_]+)/?$ /blog/$1/ [NC,L]
 
 RewriteRule ^login/$ index.php?login=yes [NC,L]
+RewriteRule ^logout/$ index.php?login=no [NC,L]
 
 RewriteRule ^([0-9]+)$ index.php?offset=$1 [NC,L]
 RewriteRule ^([A-Za-z0-9-_]+)/?$ index.php?page=$1 [NC,L]

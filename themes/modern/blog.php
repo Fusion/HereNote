@@ -7,7 +7,7 @@
             <time datetime="2008-10-17T04:33:51+00:00" class="entry-date entry-meta-element published" title="October 17, 2008 | 4:33 am" itemprop="datePublished"><?=$this->get('formatted_publish_date')?></time>
             <span class="cat-links entry-meta-element">
                 <a href="https://wp-themes.com/?cat=1" rel="category">Uncategorized</a></span>
-            <span class="author vcard entry-meta-element" itemscope itemtype="http://schema.org/Person"><a href="https://wp-themes.com/?author=1" class="url fn n" rel="author" itemprop="author">Chris Ravenscroft</a></span>
+            <span class="author vcard entry-meta-element" itemscope itemtype="http://schema.org/Person"><a href="https://wp-themes.com/?author=1" class="url fn n" rel="author" itemprop="author"><?=$this->get('realname')?></a></span>
 
 <?php
     if($this->get('edit_menu')) {
