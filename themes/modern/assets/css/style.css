@@ -1914,7 +1914,7 @@
 .pagination p {float:left;}
 .cfr-nav-logo { width:1em;height:1em;border:0px;-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none; }
 .cfr-nav-thumb { width:0.5em;height:0.5em;border:0px;-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none; }
-code { background-color: black; color: #fff; }
+code { background-color: black; color: #fff; width: 99%; }
 .pagination ul { list-style-type: none; }
 .pagination li { float: left; }
 .site-info { color: #777; }
