@@ -26,7 +26,10 @@ jQuery(document).ready(function() {
 EOB;
 }
 else if($row['format_type'] == 1) {
-    $content = $row['content'];
+    $content = preg_replace(
+        '/```(.*?)```/',
+        '<code>${1}</code>',
+        $row['content']);
     $content2 = <<<EOB
 <script>
 jQuery(document).ready(function() {

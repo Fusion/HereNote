@@ -89,6 +89,9 @@ return <<<EOB
       <span title="Bullet" class="ql-format-button ql-bullet"></span>
       <span class="ql-link ql-format-button"></span>
       <span title="Image" class="ql-format-button ql-image"></span>
+      <span title="code" class="ql-format-button ql-code"><i class="fa fa-code"></i></span>
+      <span title="undo" class="ql-format-button ql-undo"><i class="fa fa-code"></i></span>
+      <span title="redo" class="ql-format-button ql-redo"><i class="fa fa-code"></i></span>
       <span class="ql-format-separator"></span>
       <select title="Text Alignment" class="ql-align">
         <option value="left" label="Left" selected=""></option>
@@ -124,7 +127,9 @@ function init_editor_{$prefix}() {
       modules: {
         'toolbar': { container: '#{$prefix}-toolbar' },
         'image-tooltip': true,
-        'link-tooltip': true
+        'link-tooltip': true,
+        'tbcode': true,
+        'tbundo': true
       },
     'theme': 'snow'});
   return quill;
@@ -138,6 +143,7 @@ function get_editor_header() {
 return <<<EOB
 <link rel="stylesheet" href="/thirdparty/quill/quill.snow.css" />
 <script src="/thirdparty/quill/quill.min.js"></script>
+<script src="/static/js/cfrquill.js"></script>
 EOB;
 
 }

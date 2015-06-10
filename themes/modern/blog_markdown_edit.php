@@ -49,7 +49,7 @@
              <input style="width:100%" name="title" id="post_title" value="<?=$this->get('title')?>" />
             <p></p>
             <h3 class="comment-reply-title">Front Page Description</h3>
-            <textarea style="width:100%" name="description"><?=$this->get('description')?></textarea>
+            <?=$this->get('editor_d')?>
             <p></p>
             <h3 class="comment-reply-title">Featured Image</h3>
             <input style="width:100%" name="featured_image" id="featured_image" value="<?=$this->get('featured_image')?>" />
@@ -57,7 +57,7 @@
     </div>
     <div> &nbsp; </div>
     <input id="html_content" type="hidden" name="content" value="" />
-    <input id="html_content_d" type="hidden" name="content_d" value="" />
+    <input id="html_content_d" type="hidden" name="description" value="" />
     <div>
         <span>
             <a href='<?=$this->get('parent_url')?>'>Cancel</a>
@@ -73,7 +73,7 @@
 
 <script>
 var tarea = init_editor_editor();
-var tarea_d = init_editor_editor();
+var tarea_d = init_editor_editor_d();
 jQuery(tarea.getElement('editor').body).on('focus', function() {
     jQuery('#editor-editor iframe').css('border', '2px solid green');
 });
@@ -86,7 +86,7 @@ jQuery('#edit_all').submit(function(e) {
     }
     else {
         jQuery('#html_content').val(tarea.getElement('editor').body.innerText);
-        jQuery('#html_content_d').val(tarea.getElement('editor_d').body.innerText);
+        jQuery('#html_content_d').val(tarea_d.getElement('editor').body.innerText);
     }
 });
 </script>

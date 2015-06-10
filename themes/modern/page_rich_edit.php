@@ -69,22 +69,12 @@
 <script>
 var tarea = init_editor_editor();
 // this will be used to avoid losing focus when the toolbar is clicked
-var blurTimeoutAction = { showBlur: true, action: null };
-// *sigh* fpr whateever reason adding a class was not having any effect:
 jQuery('.ql-editor').on('focus', function() {
-    if(blurTimeoutAction.showBlur) {
-        //clearTimeout(blurTimeoutAction);
-        blurTimeoutAction.showBlur = true;
-    }
     jQuery(this).parent().parent().css('border', '2px solid green');
 });
-jQuery('.ql-editor').on('blur', function() {
-    var obj = this;
-    blurTimeOutAction = { showBlur: false, action: setTimeout(function() {
-        if(blurTimeoutAction.showBlur) {
-            jQuery(obj).parent().parent().css('border', '');
-        }
-    }, 500) };
+
+jQuery('input').on('focus', function() {
+    jQuery('.ql-editor').parent().parent().css('border', '');
 });
 jQuery('#edit_all').submit(function(e) {
     if(jQuery('#page_title').val() == '') {
