@@ -69,29 +69,31 @@ if($this->get('is_home')) {
 <?php
     $menu = $this->get('main_menu');
     foreach($menu as $menu_item) {
+        if(isset($menu_item['title'])) {
 ?>
 <li class="page_item page-item-2">
 <a href="/<?=$menu_item['slug']?>/"><?=$menu_item['title']?></a>
 <?php
-        if(!empty($menu_item['children'])) {
+            if(!empty($menu_item['children'])) {
 ?>
     <ul class='children'>
 <?php
-            foreach($menu_item['children'] as $child) {
-                $ending_char = (false === strpos($child['slug'], '?') ? '/' : '');
+                foreach($menu_item['children'] as $child) {
+                    $ending_char = (false === strpos($child['slug'], '?') ? '/' : '');
 ?>
     <li class="page_item page-item-2">
     <a href="/<?=$child['slug']?><?=$ending_char?>"><?=$child['title']?></a>
     </li>
 <?php
-            }
+                }
 ?>
     </ul>
 <?php
-        }
+            }
 ?>
 </li>
 <?php
+        }
     }
 ?>
 </ul></div>

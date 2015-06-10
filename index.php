@@ -135,6 +135,16 @@ function display_search($db, $template, $config, $user) {
     display_footer($db, $template, $config, $user);
 }
 
+// No registration through the web interface (yet)
+function display_login($db, $template, $config, $user) {
+    require 'display_login.php';
+    if($loggedIn)
+        return true;
+    display_header($db, $template, $config, $user);
+    display_footer($db, $template, $config, $user);
+    return false;
+}
+
 // Features under development
 function display_test($db, $template, $config, $user) {
     display_header($db, $template, $config, $user);
@@ -229,6 +239,11 @@ else if(!empty($_GET['ajax'])) {
 }
 else if(!empty($_GET['pages'])) {
     display_pages($db, $template, $config, $user);
+}
+else if(!empty($_GET['login'])) {
+    if(display_login($db, $template, $config, $user)) {
+        display_main($db, $template, $config, $user);
+    }
 }
 else {
     if(!empty($_GET['auth'])) {
