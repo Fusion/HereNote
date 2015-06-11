@@ -1,9 +1,13 @@
 <?php
+
 $config = array(
     // When running in dev mode, some behaviors change. For instance,
     // page redirects are temporary rather than permanent
     'mode'      => 'dev',
-    'url_root' => '/',
+    'site_root' => '/',
+
+    'site_name' => "The Nexus",
+    'site_desc' => "Chris' Den Of Confusion",
 
     'db_type'   => 'sqlite',
     'db_file'   => '/var/www/data/dev.db',
@@ -23,5 +27,16 @@ $config = array(
         ),
     ),
 
+    'thirdparty' => array(
+        'disqus' => array(
+            'shortname' => 'nexuszteo'
+        ),
+    ),
+
     'admin_key' => ''
 );
+
+if($config['mode'] == 'dev') {
+    ini_set("display_errors", "1");
+    error_reporting(E_ALL);
+}
