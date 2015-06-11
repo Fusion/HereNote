@@ -6,7 +6,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 <link rel="profile" href="http://gmpg.org/xfn/11" />
-<title><?=$this->site_title?></title>
+<title><?=$this->site_name?></title>
 <meta name='robots' content='noindex,follow' />
 <link rel='stylesheet' id='wm-google-fonts-css'  href='//fonts.googleapis.com/css?family=Fira+Sans%3A400%2C300&#038;ver=1.4.4#038;subset' type='text/css' media='all' />
 <link rel='stylesheet' id='wm-genericons-css'  href='/assets/css/genericons.css' type='text/css' media='all' />

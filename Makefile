@@ -3,7 +3,8 @@ all: config.php.inc deps_updated
 	@cat config.php.inc
 
 config.php.inc:
-	@cat config.php | sed  "s/'api_key' => '.*'/'api_key' => ''/g" | \
+	@cat config.php | sed  "s/'mode'      => '.*'/'mode' => 'dev'/g" | \
+        sed  "s/'api_key' => '.*'/'api_key' => ''/g" | \
 		sed "s/'user_id' => '.*'/'user_id' => ''/g" | \
 		sed "s/'site_root' => '.*'/'site_root' => '\/'/g" | \
 		sed "s/'admin_key' => '.*'/'admin_key' => ''/g" > config.php.inc

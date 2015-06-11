@@ -3,7 +3,7 @@
 $config = array(
     // When running in dev mode, some behaviors change. For instance,
     // page redirects are temporary rather than permanent
-    'mode'      => 'dev',
+    'mode' => 'dev',
     'site_root' => '/',
 
     'site_name' => "The Nexus",
