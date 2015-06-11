@@ -18,6 +18,8 @@ Hope you find this thing useful as well.
 
 # INSTALLING
 
+## Script
+
 Easy way: you have Make installed and can simply run 'make' from the command line.
 
 Less easy way: git clone the repository, pulling dependencies along:
@@ -26,6 +28,10 @@ Less easy way: git clone the repository, pulling dependencies along:
     git submodule update --init --recursive
 
 Good old way: get this script and all its dependencies by yourself. No fun.
+
+# Database
+
+Either rename `inc/dev.db.inc `to `dev.db` and place it where specified in config.php; or import `dev.db.schema.sql`
 
 # INITIALIZING
 
