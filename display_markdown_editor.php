@@ -1,4 +1,7 @@
 <?php
+
+if(!defined('RUNNING')) exit(-1);
+
 function get_editor_html($prefix, $content) {
 return <<<EOB
 <div class='editor-wrapper'>

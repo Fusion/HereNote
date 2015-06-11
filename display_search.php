@@ -3,6 +3,8 @@
 // Features under development
 // ---------------------------------------------------------------------------
 
+if(!defined('RUNNING')) exit(-1);
+
 $template->view('search');
 
 $template->set('is_home', true);

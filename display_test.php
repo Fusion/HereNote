@@ -3,6 +3,8 @@
 // Features under development
 // ---------------------------------------------------------------------------
 
+if(!defined('RUNNING')) exit(-1);
+
 $template->view('search');
 
 $results = array('pages' => array(), 'posts' => array());

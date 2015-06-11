@@ -3,6 +3,8 @@
 // Display a single blog post
 // ---------------------------------------------------------------------------
 
+if(!defined('RUNNING')) exit(-1);
+
 $template->view('blog');
 
 $slug = $db->escapeString($_GET['blog']);

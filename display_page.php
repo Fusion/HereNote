@@ -3,6 +3,8 @@
 // Display a page (as opposed to a blog entry)
 // ---------------------------------------------------------------------------
 
+if(!defined('RUNNING')) exit(-1);
+
 $template->view('page');
 
 $slug = $db->escapeString($_GET['page']);

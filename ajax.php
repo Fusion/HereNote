@@ -1,5 +1,7 @@
 <?php
 
+if(!defined('RUNNING')) exit(-1);
+
 if(!isset($_SERVER['HTTP_X_REQUESTED_WITH']) || strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) != 'xmlhttprequest') {
     die("No. Ajax headers not present.");
 }

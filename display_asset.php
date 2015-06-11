@@ -3,6 +3,8 @@
 // Rewrite an asset's path to mask actual theme path
 // ---------------------------------------------------------------------------
 
+if(!defined('RUNNING')) exit(-1);
+
 if (isset($_SERVER['HTTPS']) && strtoupper($_SERVER['HTTPS'])=='ON') {
         $protocol='https';
 }

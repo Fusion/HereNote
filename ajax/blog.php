@@ -1,4 +1,7 @@
 <?php
+
+if(!defined('RUNNING')) exit(-1);
+
 switch($_POST['action']) {
 case 'choose_source_type':
     if(empty($_POST['slug'])) {

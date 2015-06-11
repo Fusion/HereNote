@@ -3,6 +3,8 @@
 // Log in
 // ---------------------------------------------------------------------------
 
+if(!defined('RUNNING')) exit(-1);
+
 $loggedIn = false;
 
 if(!empty($_POST['LogIn'])) {

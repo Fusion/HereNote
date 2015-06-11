@@ -3,6 +3,8 @@
 // Display blog's page list
 // ---------------------------------------------------------------------------
 
+if(!defined('RUNNING')) exit(-1);
+
 $template->view('pages');
 $post_count_query = $db->query("SELECT COUNT(*) AS count FROM mae_pages");
 $row = $post_count_query->fetchArray();

@@ -3,6 +3,8 @@
 // Display blog's main page
 // ---------------------------------------------------------------------------
 
+if(!defined('RUNNING')) exit(-1);
+
 $template->view('main');
 $post_count_query = $db->query("SELECT COUNT(*) AS count FROM mae_posts");
 $row = $post_count_query->fetchArray();

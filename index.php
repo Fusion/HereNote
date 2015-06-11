@@ -1,5 +1,4 @@
 <?php
-error_reporting(E_ALL);
 
 // If possible, please relocate config.php outside your web directory and update
 // the following line accordingly.

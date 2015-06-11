@@ -3,6 +3,8 @@
 // Increment a counter upon returning a resource
 // ---------------------------------------------------------------------------
 
+if(!defined('RUNNING')) exit(-1);
+
 $obj = $db->escapeString($_GET['refdirect']);
 $row = $db->querySingle("SELECT * FROM mae_refdirect_counter WHERE obj='" . $obj . "'", true);
 if(empty($row)) {

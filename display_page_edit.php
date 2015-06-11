@@ -3,6 +3,8 @@
 // Edit a page
 // ---------------------------------------------------------------------------
 
+if(!defined('RUNNING')) exit(-1);
+
 if(!$user->can_edit) {
     die("No, you are not allowed to do that.");
 }

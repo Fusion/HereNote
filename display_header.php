@@ -3,6 +3,8 @@
 // Display a header
 // ---------------------------------------------------------------------------
 
+if(!defined('RUNNING')) exit(-1);
+
 $template->header('header');
 
 $menu = array();

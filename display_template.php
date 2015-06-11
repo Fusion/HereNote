@@ -3,6 +3,8 @@
 // This class handles very basic template management
 // ---------------------------------------------------------------------------
 
+if(!defined('RUNNING')) exit(-1);
+
 class Template {
     function __construct($theme = 'bare') {
         $this->site_name = '';

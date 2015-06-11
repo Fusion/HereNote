@@ -1,4 +1,7 @@
 <?php
+
+if(!defined('RUNNING')) exit(-1);
+
 class Util {
     // Do not use this function in a cyptographic-minded app, as we are using urandom
     // which will try to make up for any lack of actual entropy

@@ -3,6 +3,9 @@
  * This is an extremely temporary implementation -- it is bad.
  * Everything here is hardcoded.
  */
+
+if(!defined('RUNNING')) exit(-1);
+
 class User {
 
     function __construct() {
