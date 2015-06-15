@@ -36,7 +36,10 @@
 <script>
 (function( $ ) {
   $(function() {
-    var clip_path = 'http://www.archive.org/download/LakeOntario/LakeOntarioHdr.mp4';
+    //var clip_path = 'http://nexus.zteo.com/static/vid/LakeOntarioHdr.mp4';
+    //var clip_path = 'http://nexus.zteo.com/static/vid/SunbeamGreenVidevo.mp4';
+    //var clip_path = 'http://nexus.zteo.com/static/vid/Underwater2.mp4';
+    var clip_path = 'http://nexus.zteo.com/static/vid/hd0198.mp4';
     var BV = new $.BigVideo({forceAutoplay:Modernizr.touch});
     BV.init();
     BV.show(clip_path, {ambient:true});
