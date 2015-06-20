@@ -28,6 +28,9 @@ deps_updated:
 		rm quill.tar.gz; \
 		cd ..; \
 	fi
+	@if [ ! -d "thirdparty/notifyme" ]; then mkdir thirdparty/notifyme; fi
+	@if [ ! -f "thirdparty/notifyme/notifyme.js" ]; then cp thirdparty/src/notifyme/assets/js/notifyme.js thirdparty/notifyme/notifyme.js; fi
+	@if [ ! -f "thirdparty/notifyme/notifyme.css" ]; then cp thirdparty/src/notifyme/assets/js/notifyme.css thirdparty/notifyme/notifyme.css; fi
 	@touch deps_updated
 
 clean:

@@ -7,3 +7,6 @@
 [submodule "thirdparty/src/epiceditor"]
 	path = thirdparty/src/epiceditor
 	url = git://github.com/OscarGodson/EpicEditor.git
+[submodule "thirdparty/src/notifyme"]
+	path = thirdparty/src/notifyme
+	url = git://github.com/brunodsgn/notifyme.git
