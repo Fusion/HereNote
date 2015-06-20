@@ -44,9 +44,31 @@ class User {
 
     function get($space, $name) {
         if(!isset($_SESSION[$space]) || !isset($_SESSION[$space][$name]))
-            return null;
+            return false;
 
         return $_SESSION[$space][$name];
+    }
+
+    function get_and_delete($space, $name) {
+        if(!isset($_SESSION[$space]) || !isset($_SESSION[$space][$name]))
+            return false;
+        $notification = $this->get($space, $name);
+        $this->delete($space, $name);
+        return $notification;
+    }
+
+    /* notify */
+
+    function set_notification($title, $msg, $type='success') {
+        $this->set('notifications', 'note', array(
+            'type' => $type,
+            'title' => $title,
+            'msg' => $msg
+        ));
+    }
+
+    function get_notification() {
+        return $this->get_and_delete('notifications', 'note');
     }
 }
 ?>

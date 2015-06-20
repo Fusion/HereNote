@@ -196,6 +196,7 @@ if(isset($_SESSION['user'])) {
 }
 else {
     $user = new User();
+    $_SESSION['user'] = $user;
 }
 
 // ---------------------------------------------------------------------------
@@ -243,8 +244,10 @@ else if(!empty($_GET['pages'])) {
 }
 else if(!empty($_GET['login'])) {
     if($_GET['login'] == 'no') {
-        $user->reset();
         unset($_SESSION['user']);
+        $user->reset();
+        $_SESSION['user'] = $user;
+        $user->set_notification('Logged out', "You are now browsing as a guest.");
         display_main($db, $template, $config, $user);
     }
     else {
@@ -264,5 +267,6 @@ else {
 }
 
 $template->set_user($user);
+$template->set_notification($user->get_notification());
 $template->render();
 ?>

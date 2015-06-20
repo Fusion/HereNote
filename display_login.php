@@ -19,6 +19,7 @@ if(!empty($_POST['LogIn'])) {
         $loggedIn = true;
         $user->auth($row['login'], $row['realname'], $row['can_edit']);
         $_SESSION['user'] = $user;
+        $user->set_notification('Logged in', "You are now browsing as {$row['realname']}");
     }
 }
 if(!$loggedIn) {

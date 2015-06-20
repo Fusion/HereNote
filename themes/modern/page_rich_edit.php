@@ -79,6 +79,7 @@ jQuery('input').on('focus', function() {
 jQuery('#edit_all').submit(function(e) {
     if(jQuery('#page_title').val() == '') {
         e.preventDefault();
+        inform('Empty field', 'You need to provide a title for this page', 'error');
     }
     else {
         jQuery('#html_content').val(tarea.getHTML());

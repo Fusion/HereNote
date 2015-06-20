@@ -17,6 +17,7 @@ class Template {
         $this->footer = false;
         $this->footer_extra = '';
         $this->user = false;
+        $this->notification = false;
         $this->vars = array();
     }
 
@@ -50,6 +51,10 @@ class Template {
 
     function set_desc($desc) {
         $this->site_desc = $desc;
+    }
+
+    function set_notification($notification) {
+        $this->notification = $notification;
     }
 
     function set_root($root) {

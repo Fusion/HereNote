@@ -21,22 +21,30 @@
 body{background-color:#1a1c1e}.site-banner-media:before,.banner-images:before {background:transparent;background:-webkit-linear-gradient(  top, rgba(26,28,30,0) 0%, #1a1c1e 100% );background:  linear-gradient( to bottom, rgba(26,28,30,0) 0%, #1a1c1e 100% );}.site-header,.site-header .social-links,.page-title,.taxonomy-description,.page-title,.error-404,.not-found {color:#ffffff;border-color:#ffffff;}a,.accent-color{color:#0aac8e}mark,ins,.highlight,pre:before,.pagination a,.pagination span,.label-sticky,.button,button,input[type="button"],input[type="reset"],input[type="submit"],.taxonomy-links a,.format-quote,.posts .format-quote,.format-status,.posts .format-status,.entry-content div.sharedaddy .sd-content ul li a.sd-button:not(.no-text),.post-navigation .nav-previous,.post-navigation .nav-next,.bypostauthor > .comment-body .comment-author:before,.comment-navigation a,.widget_calendar tbody a,.widget .tagcloud a:hover,body #infinite-handle span,.menu-toggle:before,.format-gallery .slick-prev,.format-gallery .slick-next {background-color:#0aac8e;color:#ffffff;}.entry-content div.sharedaddy .sd-content ul li a.sd-button:not(.no-text){color:#ffffff !important}mark,ins,.highlight {-webkit-box-shadow:.38em 0 0 #0aac8e, -.38em 0 0 #0aac8e;  box-shadow:.38em 0 0 #0aac8e, -.38em 0 0 #0aac8e;}.infinite-loader .spinner > div > div{background:#0aac8e !important}.label-sticky:before,.label-sticky:after {border-top-color:#0aac8e;border-right-color:#0aac8e;}input:focus,select:focus,textarea:focus,.widget .tagcloud a:hover{border-color:#0aac8e}.post-navigation .has-post-thumbnail:before {background:#0aac8e;background:-webkit-linear-gradient(  right, rgba(10,172,142,0) 19%, #0aac8e 81% );background:  linear-gradient( to left, rgba(10,172,142,0) 19%, #0aac8e 81% );}.post-navigation .nav-next.has-post-thumbnail:before {background:#0aac8e;background:-webkit-linear-gradient( left, rgba(10,172,142,0) 19%, #0aac8e 81% );background:  linear-gradient( to right, rgba(10,172,142,0) 19%, #0aac8e 81% );}body {font-family:'Fira Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;}h1, h2, h3, h4, h5, h6,.h1, .h2, .h3, .h4, .h5, .h6{font-family:'Fira Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif}.site-title{font-family:'Fira Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif}
 
 </style>
-<link rel="stylesheet" href="/thirdparty/highlight/styles/agate.css" />
-<script type='text/javascript' src='/assets/js/jquery.js?ver=1.11.2'></script>
-<script type='text/javascript' src='/assets/js/jquery-migrate.min.js?ver=1.2.1'></script>
-<script src="/thirdparty/highlight/highlight.pack.js"></script>
+
+<!-- This section common to all themes -->
+    <script src='/thirdparty/jquery/jquery.js'></script>
+    <script src='/thirdparty/jquery/jquery-migrate.min.js'></script>
+    <link rel='stylesheet'  href='/thirdparty/jquery/jquery-ui.min.css' type='text/css' media='all' />
+    <Script src='/thirdparty/jquery/jquery-ui.min.js'></script>
+
+    <script src='/thirdparty/modernizr/custom-modernizr.js'></script>
+
+    <link rel="stylesheet" href="/thirdparty/highlight/styles/agate.css" />
+    <script src="/thirdparty/highlight/highlight.pack.js"></script>
+
+    <link rel="stylesheet" href="/thirdparty/notifyme/notifyme.css" />
+    <Script src='/thirdparty/notifyme/notifyme.js'></script>
+<!-- End of common section -->
 
 <!-- Big video -->
-<link rel='stylesheet'  href='/assets/css/jquery-ui.min.css' type='text/css' media='all' />
-<link rel='stylesheet'  href='/assets/css/video-js.min.css' type='text/css' media='all' />
-<link rel='stylesheet'  href='/assets/css/bigvideo.css' type='text/css' media='all' />
+    <link rel='stylesheet' href='/assets/css/video-js.min.css' type='text/css' media='all' />
+    <link rel='stylesheet' href='/assets/css/bigvideo.css' type='text/css' media='all' />
 
-<script src='/assets/js/custom-modernizr.js'></script>
-<script src='/assets/js/jquery.js'></script>
-<Script src='/assets/js/jquery-ui.min.js'></script>
-<Script src='/assets/js/video.js'></script>
-<script src='/assets/js/imagesloaded.pkgd.min.js'></script>
-<script src='/assets/js/bigvideo.js'></script>
+    <script src='/assets/js/video.js'></script>
+    <script src='/assets/js/imagesloaded.pkgd.min.js'></script>
+    <script src='/assets/js/bigvideo.js'></script>
+<!-- End of big videos -->
 
 <script src='/static/js/cfr.js'></script>
 

@@ -145,7 +145,7 @@ EOB;
 function get_editor_header() {
 return <<<EOB
 <link rel="stylesheet" href="/thirdparty/quill/quill.snow.css" />
-<script src="/thirdparty/quill/quill.min.js"></script>
+<script src="/thirdparty/quill/quill.js"></script>
 <script src="/static/js/cfrquill.js"></script>
 EOB;
 

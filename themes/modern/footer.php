@@ -43,6 +43,13 @@
     var BV = new $.BigVideo({forceAutoplay:Modernizr.touch});
     BV.init();
     BV.show(clip_path, {ambient:true});
+    <?php
+    if($this->notification) {
+    ?>
+    inform('<?=$this->notification['title']?>', '<?=$this->notification['msg']?>', '<?=$this->notification['type']?>');
+    <?php
+    }
+    ?>
   });
 })(jQuery);
 </script>
