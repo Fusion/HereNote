@@ -46,8 +46,8 @@ if($user->can_edit) {
         'children' => array(
             0 => $pub_switch,
             1 => array(
-                'slug' => 'pages',
-                'title' => 'view pages'
+                'slug' => '#',
+                'title' => ''
             ),
             2 => array(
                 'slug' => 'blog/new_rich/edit',
@@ -58,14 +58,38 @@ if($user->can_edit) {
                 'title' => 'new markdown post'
             ),
             4 => array(
+                'slug' => '#',
+                'title' => ''
+            ),
+            5 => array(
+                'slug' => 'pages',
+                'title' => 'view pages'
+            ),
+            6 => array(
                 'slug' => 'new_rich/edit',
                 'title' => 'new rich page'
             ),
-            5 => array(
+            7 => array(
                 'slug' => 'new_markdown/edit',
                 'title' => 'new markdown page'
             ),
-	)
+            8 => array(
+                'slug' => '#',
+                'title' => ''
+            ),
+            9 => array(
+                'slug' => 'notes',
+                'title' => 'view notes'
+            ),
+            10 => array(
+                'slug' => 'note/new_rich/edit',
+                'title' => 'new rich note'
+            ),
+            11 => array(
+                'slug' => 'note/new_markdown/edit',
+                'title' => 'new markdown note'
+            ),
+        )
     );
 }
 

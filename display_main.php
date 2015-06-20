@@ -6,7 +6,14 @@
 if(!defined('RUNNING')) exit(-1);
 
 $template->view('main');
-$post_count_query = $db->query("SELECT COUNT(*) AS count FROM mae_posts");
+
+// Status: 2 == published
+if($user->get('display', 'unpublished'))
+    $status_str = '!=2';
+else
+    $status_str = '=2';
+
+$post_count_query = $db->query("SELECT COUNT(*) AS count FROM mae_posts WHERE section=1 AND status{$status_str}");
 $row = $post_count_query->fetchArray();
 $post_count = $row['count'];
 
@@ -19,13 +26,8 @@ else {
 $prev_offset = $offset < $config['per_page'] ? 0 : $offset - $config['per_page'];
 $next_offset = $offset + $config['per_page'] > $post_count ? $offset : $offset + $config['per_page'];
 
-// Status: 2 == published
-if($user->get('display', 'unpublished'))
-    $status_str = '!=2';
-else
-    $status_str = '=2';
 $posts = array();
-$posts_list = $db->query("SELECT * FROM mae_posts WHERE status{$status_str} ORDER BY publish_date DESC LIMIT {$config['per_page']} OFFSET $offset");
+$posts_list = $db->query("SELECT * FROM mae_posts WHERE section=1 AND status{$status_str} ORDER BY publish_date DESC LIMIT {$config['per_page']} OFFSET $offset");
 while($row = $posts_list->fetchArray()) {
     $post = new stdClass();
 

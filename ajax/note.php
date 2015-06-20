@@ -12,7 +12,7 @@ case 'publish':
     else {
         $slug = $db->escapeString($_POST['slug']);
         $new_status = ($_POST['action'] == 'unpublish' ? 1 : 2);
-        $db->exec("UPDATE mae_posts SET status=" . $new_status . " WHERE section=2 AND slug='" . $slug ."'");
+        $db->exec("UPDATE mae_posts SET status=" . $new_status . " WHERE section=3 AND slug='" . $slug ."'");
         $success = true;
         $data = array();
     }

@@ -2,10 +2,16 @@ RewriteEngine on
 
 RewriteRule ^blog/([A-Za-z0-9-_]+)/?$ index.php?blog=$1 [NC,L]
 RewriteRule ^blog/([A-Za-z0-9-_]+)/edit/?$ index.php?blog_edit=$1 [NC,L]
-RewriteRule ^([A-Za-z0-9-_]+)/edit/?$ index.php?page_edit=$1 [NC,L]
 
+RewriteRule ^note/([A-Za-z0-9-_]+)/?$ index.php?note=$1 [NC,L]
+RewriteRule ^note/([A-Za-z0-9-_]+)/edit/?$ index.php?note_edit=$1 [NC,L]
+
+RewriteRule ^([A-Za-z0-9-_]+)/edit/?$ index.php?page_edit=$1 [NC,L]
 RewriteRule ^pages/$ index.php?pages=yes [NC,L]
 RewriteRule ^pages/([0-9]+)$ index.php?pages=yes&offset=$1 [NC,L]
+
+RewriteRule ^notes/$ index.php?notes=yes [NC,L]
+RewriteRule ^pages/([0-9]+)$ index.php?notes=yes&offset=$1 [NC,L]
 
 RewriteRule ^refdirect/([A-Za-z0-9-_]+)/?$ index.php?refdirect=$1 [NC,L]
 

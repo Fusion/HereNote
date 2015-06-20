@@ -8,7 +8,7 @@ if(!defined('RUNNING')) exit(-1);
 $template->view('blog');
 
 $slug = $db->escapeString($_GET['blog']);
-$row = $db->querySingle("SELECT * FROM mae_posts LEFT JOIN mae_users ON mae_users.id=user_id WHERE slug='" . $slug . "'", true);
+$row = $db->querySingle("SELECT * FROM mae_posts LEFT JOIN mae_users ON mae_users.id=user_id WHERE section=1 AND slug='" . $slug . "'", true);
 if(empty($row)) {
     die("Blog Ooops. 404 and all that :(");
 }

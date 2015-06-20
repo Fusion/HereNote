@@ -87,6 +87,12 @@ function display_pages($db, $template, $config, $user) {
     display_footer($db, $template, $config, $user);
 }
 
+function display_notes($db, $template, $config, $user) {
+    display_header($db, $template, $config, $user);
+    require 'display_notes.php';
+    display_footer($db, $template, $config, $user);
+}
+
 function display_blog($db, $template, $config, $user) {
     display_header($db, $template, $config, $user);
     require 'display_blog.php';
@@ -108,6 +114,18 @@ function display_page($db, $template, $config, $user) {
 function display_page_edit($db, $template, $config, $user) {
     display_header($db, $template, $config, $user);
     require 'display_page_edit.php';
+    display_footer($db, $template, $config, $user);
+}
+
+function display_note($db, $template, $config, $user) {
+    display_header($db, $template, $config, $user);
+    require 'display_note.php';
+    display_footer($db, $template, $config, $user);
+}
+
+function display_note_edit($db, $template, $config, $user) {
+    display_header($db, $template, $config, $user);
+    require 'display_note_edit.php';
     display_footer($db, $template, $config, $user);
 }
 
@@ -221,6 +239,12 @@ else if(!empty($_GET['page'])) {
 else if(!empty($_GET['page_edit'])) {
     display_page_edit($db, $template, $config, $user);
 }
+else if(!empty($_GET['note'])) {
+    display_note($db, $template, $config, $user);
+}
+else if(!empty($_GET['note_edit'])) {
+    display_note_edit($db, $template, $config, $user);
+}
 else if(!empty($_GET['refdirect'])) {
     display_refdirect($db, $template, $config, $user);
 }
@@ -241,6 +265,9 @@ else if(!empty($_GET['ajax'])) {
 }
 else if(!empty($_GET['pages'])) {
     display_pages($db, $template, $config, $user);
+}
+else if(!empty($_GET['notes'])) {
+    display_notes($db, $template, $config, $user);
 }
 else if(!empty($_GET['login'])) {
     if($_GET['login'] == 'no') {

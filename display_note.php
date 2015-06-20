@@ -1,14 +1,14 @@
 <?php
 // ---------------------------------------------------------------------------
-// Display a page (as opposed to a blog entry)
+// Display a note (as opposed to a blog entry)
 // ---------------------------------------------------------------------------
 
 if(!defined('RUNNING')) exit(-1);
 
-$template->view('page');
+$template->view('note');
 
-$slug = $db->escapeString($_GET['page']);
-$row = $db->querySingle("SELECT title,content,status,format_type FROM mae_posts WHERE section=2 AND slug='" . $slug . "'", true);
+$slug = $db->escapeString($_GET['note']);
+$row = $db->querySingle("SELECT title,content,status,format_type FROM mae_posts WHERE section=3 AND slug='" . $slug . "'", true);
 if(empty($row)) {
     die("Page Ooops. 404 and all that :(");
 }
