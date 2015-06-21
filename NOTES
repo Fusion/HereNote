@@ -1,6 +1,7 @@
 # TODO
 
-Remove all references to the first overlay attempt; the one that performs a transition of .page
+* Remove all references to the first overlay attempt; the one that performs a transition of .page
+* Get rid of pages table
 
 
 # APIs
@@ -12,3 +13,14 @@ Remove all references to the first overlay attempt; the one that performs a tran
 * In G+, click 'profile' then any of my posts' link to get my ID
 * Now, feed link is https://www.googleapis.com/plus/v1/people/<my ID>/activities/public?key=<API key>
 
+# DATABASE
+
+* At this time, the pages table is defunct.
+* Importing from pages to posts was done using:
+
+    INSERT INTO mae_posts(short_url,site_id,keywords_string,in_sitemap,user_id,title,content,rating_sum,rating_count,comments_count,status,description,
+    rating_average,slug,gen_description,allow_comments,publish_date,content_type,ref_url,source_id,format_type,short_description,section) SELECT
+     short_url short_url,1 site_id,'' keywords_string, 1 in_sitemap, 1 user_id, title title, mae_pages_richtextpage.content content, 5 rating_sum,
+     1 rating_count, 0 comments_count, status status, description description, 5.0 rating_average, slug slug, gen_description gen_description,
+     1 allow_comments, publish_date publish_date, 1 content_type, '' ref_url, '' source_id, format_type format_type, '' short_description,
+     2 section FROM  mae_pages left join mae_pages_richtextpage on id=page_ptr_id;

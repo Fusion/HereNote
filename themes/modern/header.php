@@ -80,17 +80,18 @@ if($this->get('is_home')) {
         if(isset($menu_item['title'])) {
 ?>
 <li class="page_item page-item-2">
-<a href="/<?=$menu_item['slug']?>/"><?=$menu_item['title']?></a>
+<a href="<?=$menu_item['slug']?>"><?=$menu_item['title']?></a>
 <?php
             if(!empty($menu_item['children'])) {
 ?>
     <ul class='children'>
 <?php
                 foreach($menu_item['children'] as $child) {
-                    $ending_char = (false === strpos($child['slug'], '?') ? '/' : '');
+                    //$ending_char = (false === strpos($child['slug'], '?') ? '/' : '');
+                    $ending_char = '';
 ?>
     <li class="page_item page-item-2">
-    <a href="/<?=$child['slug']?><?=$ending_char?>"><?=$child['title']?></a>
+    <a href="<?=$child['slug']?><?=$ending_char?>"><?=$child['title']?></a>
     </li>
 <?php
                 }

@@ -1,32 +1,68 @@
 RewriteEngine on
 
+# Read a given blog post
 RewriteRule ^blog/([A-Za-z0-9-_]+)/?$ index.php?blog=$1 [NC,L]
+# Edit a blog post ('/edit/' was added aafter the post's slug)
 RewriteRule ^blog/([A-Za-z0-9-_]+)/edit/?$ index.php?blog_edit=$1 [NC,L]
 
+# Read a note
 RewriteRule ^note/([A-Za-z0-9-_]+)/?$ index.php?note=$1 [NC,L]
+# Edit a note
 RewriteRule ^note/([A-Za-z0-9-_]+)/edit/?$ index.php?note_edit=$1 [NC,L]
 
+# Edit a page (pages have no prefix)
 RewriteRule ^([A-Za-z0-9-_]+)/edit/?$ index.php?page_edit=$1 [NC,L]
+# For admin mostly: display pages list
 RewriteRule ^pages/$ index.php?pages=yes [NC,L]
+# Switch to list of published pages. We will quickly immediately this URL without '/published/'
+RewriteRule ^pages/published/?$ index.php?pages=yes&setting=display&show=published [NC,L]
+# Switch to list of unpublished pages
+RewriteRule ^pages/unpublished/?$ index.php?pages=yes&setting=display&show=unpublished [NC,L]
+# Paging for, uh, pages
 RewriteRule ^pages/([0-9]+)$ index.php?pages=yes&offset=$1 [NC,L]
 
+# Display list of notes
 RewriteRule ^notes/$ index.php?notes=yes [NC,L]
-RewriteRule ^pages/([0-9]+)$ index.php?notes=yes&offset=$1 [NC,L]
+# Switch to published notes
+RewriteRule ^notes/published/?$ index.php?notes=yes&setting=display&show=published [NC,L]
+# Switch to unpublished notes
+RewriteRule ^notes/unpublished/?$ index.php?notes=yes&setting=display&show=unpublished [NC,L]
+# Paging for notes
+RewriteRule ^notes/([0-9]+)$ index.php?notes=yes&offset=$1 [NC,L]
 
+# Display list of posts -- similar to no argument but useful to switch
+RewriteRule ^posts/$ index.php [NC,L]
+# ...between the two guys below
+RewriteRule ^posts/published/?$ index.php?setting=display&show=published [NC,L]
+RewriteRule ^posts/unpublished/?$ index.php?setting=display&show=unpublished [NC,L]
+# While in that mode, might as well offer paging
+RewriteRule ^posts/([0-9]+)$ index.php?posts=yes&offset=$1 [NC,L]
+
+# Increment access counter, then redirect to proper location
 RewriteRule ^refdirect/([A-Za-z0-9-_]+)/?$ index.php?refdirect=$1 [NC,L]
 
+# Access assets; themes are supported
 RewriteRule ^assets/(.*)$ index.php?asset=$1 [NC,L]
 
+# Search
 RewriteCond %{QUERY_STRING} q=([^&]+)
 RewriteRule ^search/$ /search/%1 [L,R=301,NC]
 RewriteRule ^osearch/(.*)$ https://www.google.com/?q=$1+site:nexus.zteo.com [L,NC]
 RewriteRule ^search/(.*)$ index.php?search=$1 [L,NC]
 
+# Rewrite rules used for compatibility with databases imported from WP
 RewriteRule ^([0-9][0-9][0-9][0-9]/.*)/?$ index.php?rewrite=$1 [NC,L]
 RewriteRule ^blog/[0-9][0-9][0-9][0-9]/[0-9][0-9]/[0-9][0-9]/([A-Za-z0-9-_]+)/?$ /blog/$1/ [NC,L]
 
+# Actions
 RewriteRule ^login/$ index.php?login=yes [NC,L]
 RewriteRule ^logout/$ index.php?login=no [NC,L]
 
+# Paging for main display (blog posts)
 RewriteRule ^([0-9]+)$ index.php?offset=$1 [NC,L]
+# Whereas this is used to display pages as opposed to blog posts
 RewriteRule ^([A-Za-z0-9-_]+)/?$ index.php?page=$1 [NC,L]
+
+# Util: reset display type if the home url is accessed
+# In index code, we make sure to avoid loops -- hopefully!
+RewriteRule ^/?$ index.php?setting=display&show=published [NC,L]

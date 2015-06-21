@@ -55,6 +55,7 @@ function format_ago($timestamp) {
     return "$txt ago";
 }
 
+// Used to sanitize cookies if necessary
 function alphanum_only($txt) {
     return preg_replace('/[^\da-z]/i', '', $txt);
 }
@@ -169,7 +170,12 @@ function display_test($db, $template, $config, $user) {
     display_footer($db, $template, $config, $user);
 }
 
+// ---------------------------------------------------------------------------
+// A few utilities
+// ---------------------------------------------------------------------------
+
 // This little backdoor has to disappear ASAP
+// UPDATE: gone!
 function attempt_auth($db, $template, $config, $user) {
 /* Dead!
     if($_GET['auth'] == $config['admin_key']) {
@@ -185,6 +191,18 @@ function attempt_auth($db, $template, $config, $user) {
 */
 }
 
+function perform_redirect($new_url) {
+    if (isset($_SERVER['HTTPS']) && strtoupper($_SERVER['HTTPS'])=='ON') {
+        $protocol='https';
+    }
+    else {
+        $protocol='http';
+    }
+    $redirect = 'Location: ' . $protocol . '://' . $_SERVER['HTTP_HOST'] . $new_url;
+    header($redirect, true);
+    exit(0);
+}
+
 function update_setting($db, $template, $config, $user) {
     $action = $_GET['setting'];
     switch($action) {
@@ -193,9 +211,13 @@ function update_setting($db, $template, $config, $user) {
                 switch($_GET['show']) {
                     case 'unpublished':
                         $user->set('display', 'unpublished', true);
+                        if(strpos($_SERVER['REQUEST_URI'], 'unpublished') !== false)
+                            perform_redirect(str_replace('/unpublished', '', $_SERVER['REQUEST_URI']));
                     break;
                     case 'published':
                         $user->delete('display', 'unpublished');
+                        if(strpos($_SERVER['REQUEST_URI'], 'published') !== false)
+                            perform_redirect(str_replace('/published', '', $_SERVER['REQUEST_URI']));
                     break;
                 }
             }
@@ -226,6 +248,10 @@ $template = new Template($config['theme']);
 $template->set_root($config['site_root']);
 $template->set_name($config['site_name']);
 $template->set_desc($config['site_desc']);
+
+if(!empty($_GET['setting'])) {
+    update_setting($db, $template, $config, $user);
+}
 
 if(!empty($_GET['blog'])) {
     display_blog($db, $template, $config, $user);
@@ -286,9 +312,6 @@ else if(!empty($_GET['login'])) {
 else {
     if(!empty($_GET['auth'])) {
         attempt_auth($db, $template, $config, $user);
-    }
-    if(!empty($_GET['setting'])) {
-        update_setting($db, $template, $config, $user);
     }
     display_main($db, $template, $config, $user);
 }
