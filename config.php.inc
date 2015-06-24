@@ -13,7 +13,7 @@ $config = array(
     'db_file'   => '/var/www/data/dev.db',
 
     'theme'     => 'modern',
-    'per_page'  => 9,
+    'per_page'  => 12,
 
     // Sensitive data. If possible, relocate your config file
     // outside your web directory.
@@ -40,3 +40,5 @@ if($config['mode'] == 'dev') {
     ini_set("display_errors", "1");
     error_reporting(E_ALL);
 }
+
+define ('RUNNING', true);

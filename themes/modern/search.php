@@ -22,26 +22,11 @@ Search results for: <span><?=$this->get('search_term')?></span>
 <div id="posts" class="posts posts-list clearfix" itemscope itemtype="http://schema.org/ItemList">
 <?php
 $results = $this->get('results');
-foreach($results['pages'] as $result) {
-?>
-<article class="post-19 post type-post status-publish format-standard hentry category-uncategorized tag-boat tag-lake" itemscope itemprop="blogPost" itemtype="http://schema.org/BlogPosting">
-<div class="entry-inner">
-<div class="entry-meta">page
-</div>
-<header class="entry-header">
-<h1 class="entry-title" itemprop="name">
-<a href='/<?=$result['slug']?>/' rel='bookmark' class='cfr-line-wrap'>><?=$result['title']?></a>
-</h1>
-</header>
-</div>
-</article>
-<?php
-}
 foreach($results['posts'] as $result) {
 ?>
 <article class="post-19 post type-post status-publish format-standard hentry category-uncategorized tag-boat tag-lake" itemscope itemprop="blogPost" itemtype="http://schema.org/BlogPosting">
 <div class="entry-inner">
-<div class="entry-meta">post
+<div class="entry-meta"><?=$result['section_name']?>
 </div>
 <header class="entry-header">
 <h1 class="entry-title" itemprop="name">

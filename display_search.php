@@ -18,16 +18,12 @@ else {
         $template->set('error_msg', 'Please enter at least 4 characters');
     } else {
         $results = array('pages' => array(), 'posts' => array());
-        $result_list = $db->query("SELECT title,slug FROM mae_posts where status=2 AND title like '%" . $search_term . "%' OR content like '%" . $search_term . "%'");
+        $result_list = $db->query("SELECT title,slug,section_name FROM mae_posts LEFT JOIN mae_sections ON section=mae_sections.id WHERE status=2 AND title like '%" . $search_term . "%' OR content like '%" . $search_term . "%'");
         while($row = $result_list->fetchArray()) {
-            $results['posts'][] = array('slug' => $row['slug'], 'title' => $row['title']);
-        }
-        $result_list = $db->query("SELECT titles,slug FROM mae_pages left join mae_pages_richtextpage on id=page_ptr_id where status=2 AND content like '%" . $search_term . "%'");
-        while($row = $result_list->fetchArray()) {
-            $results['pages'][] = array('slug' => $row['slug'], 'title' => $row['titles']);
+            $results['posts'][] = array('slug' => $row['slug'], 'title' => $row['title'], 'section_name' => $row['section_name']);
         }
 
-        if(empty($results['posts']) && empty($results['pages'])) {
+        if(empty($results['posts'])) {
             $template->set('error_msg', 'Nothing found. Try again with different keywords.');
         }
         else {
