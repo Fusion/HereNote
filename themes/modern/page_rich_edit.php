@@ -43,11 +43,21 @@
     <div> &nbsp; </div>
     <div>
         <input type="checkbox" name="display_more" id="display_more-check" />
-        <label for="display_more-check">Edit Title</label>
+        <label for="display_more-check">Edit Title &amp; Parent</label>
         <div class="display_more-content">
             <p></p>
             <h3 class="comment-reply-title">Page Title</h3>
             <input style="width:100%" name="title" id="page_title" value="<?=$this->get('title')?>" />
+            <p></p>
+            <h3 class="comment-reply-title">Page Parent</h3>
+            <select name="parent" id="page_parent">
+            <?php
+            foreach($this->get('parent_menu') as $parent_entry) {
+                $selected = ($this->get('parent_id') == $parent_entry['id'] ? ' selected' : '');
+                echo "<option value='{$parent_entry['id']}'{$selected}>".str_repeat('-', $parent_entry['indent'])."{$parent_entry['title']}</option>\n";
+            }
+            ?>
+            </select>
         </div>
     </div>
     <div> &nbsp; </div>
