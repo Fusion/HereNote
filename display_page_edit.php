@@ -21,7 +21,7 @@ function traverse_parents($parent_list, $parent_id=0, $indent=2) {
 }
 
 if(!$user->can_edit) {
-    die("No, you are not allowed to do that.");
+    http_error(403, 'You are not allowed to edit');
 }
 else {
     if(!empty($_POST['Save'])) {
@@ -106,7 +106,7 @@ else {
     else {
         $row = $db->querySingle("SELECT * FROM mae_posts WHERE section=2 AND slug='" . $slug . "'", true);
         if(empty($row)) {
-            die("Blog-Edit Ooops. 404 and all that :(");
+            http_error(404, 'Page not found');
         }
         $row['parent_url'] = $config['site_root'] . $slug .'/';
     }

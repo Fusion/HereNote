@@ -6,7 +6,7 @@
 if(!defined('RUNNING')) exit(-1);
 
 if(!$user->can_edit) {
-    die("No, you are not allowed to do that.");
+    http_error(403, 'You are not allowed to edit');
 }
 else {
     // Are we submitting an edited form?
@@ -77,7 +77,7 @@ else {
     else {
         $row = $db->querySingle("SELECT * FROM mae_posts WHERE section=1 AND slug='" . $slug . "'", true);
         if(empty($row)) {
-            die("Blog-Edit Ooops. 404 and all that :(");
+            http_error(404, 'Blog post not found');
         }
         $row['parent_url'] = $config['site_root'] . 'blog/' . $slug .'/';
     }

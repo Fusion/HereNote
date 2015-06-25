@@ -10,7 +10,7 @@ $template->view('note');
 $slug = $db->escapeString($_GET['note']);
 $row = $db->querySingle("SELECT title,content,status,format_type FROM mae_posts WHERE section=3 AND slug='" . $slug . "'", true);
 if(empty($row)) {
-    die("Page Ooops. 404 and all that :(");
+    http_error(404, 'Note not found');
 }
 
 if($row['format_type'] == 2) {
