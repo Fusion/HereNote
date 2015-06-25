@@ -93,8 +93,8 @@ return <<<EOB
       <span class="ql-link ql-format-button"></span>
       <span title="Image" class="ql-format-button ql-image"></span>
       <span title="code" class="ql-format-button ql-code"><i class="fa fa-code"></i></span>
-      <span title="undo" class="ql-format-button ql-undo"><i class="fa fa-code"></i></span>
-      <span title="redo" class="ql-format-button ql-redo"><i class="fa fa-code"></i></span>
+      <span title="undo" class="ql-format-button ql-undo"><i class="fa fa-undo"></i></span>
+      <span title="redo" class="ql-format-button ql-redo"><i class="fa fa-repeat"></i></span>
       <span class="ql-format-separator"></span>
       <select title="Text Alignment" class="ql-align">
         <option value="left" label="Left" selected=""></option>
