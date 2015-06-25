@@ -1,0 +1,39 @@
+/*
+HTML 5 Template Name: 
+File: 404 - 22 CSS
+Author: OS Templates
+Author URI: http://www.os-templates.com/
+Licence: <a href="http://www.os-templates.com/template-terms">Website Template Licence</a>
+*/
+
+#fof{display:block; width:100%; margin:100px 0; line-height:1.6em; text-align:center;}
+#fof .hgroup{text-transform:uppercase;}
+#fof .hgroup h1{margin-bottom:25px; font-size:80px;}
+#fof .hgroup h1 span{display:inline-block; margin-left:5px; padding:2px; border:1px solid #CCCCCC; overflow:hidden;}
+#fof .hgroup h1 span strong{display:inline-block; padding:0 20px 20px; border:1px solid #CCCCCC; font-weight:normal;}
+#fof .hgroup h2{font-size:60px;}
+#fof .hgroup h2 span{display:block; font-size:30px;}
+#fof p{margin:25px 0 0 0; padding:0; font-size:16px;}
+#fof p:first-child{margin-top:0;}
+
+body{margin:0; padding:0; font-size:13px; font-family:Georgia, "Times New Roman", Times, serif;}
+
+.clear:after{content:"."; display:block; height:0; clear:both; visibility:hidden; line-height:0;}
+.clear{display:inline-block; clear:both;}
+html[xmlns] .clear{display:block;}
+* html .clear{height:1%;}
+
+a{outline:none; text-decoration:none;}
+
+div.wrapper{display:block; width:100%; margin:0; padding:0; text-align:left;}
+
+.row2{color:#979797; background-color:#FFFFFF;}
+.row2 a{color:#FF9900; background-color:#FFFFFF;}
+
+div.wrapper h1, div.wrapper h2, div.wrapper h3, div.wrapper h4, div.wrapper h5, div.wrapper h6{
+    margin:0 0 15px 0;
+    padding:0;
+    font-size:20px;
+    font-weight:normal;
+    line-height:normal;
+    }

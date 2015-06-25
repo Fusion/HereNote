@@ -7,6 +7,7 @@ if(!defined('RUNNING')) exit(-1);
 
 if(!$user->can_edit) {
     die("No, you are not allowed to do that.");
+    http_error(403, 'You are not allowed to edit');
 }
 else {
     if(!empty($_POST['Save'])) {
@@ -68,7 +69,7 @@ else {
     else {
         $row = $db->querySingle("SELECT * FROM mae_posts WHERE section=3 AND slug='" . $slug . "'", true);
         if(empty($row)) {
-            die("Blog-Edit Ooops. 404 and all that :(");
+            http_error(404, 'Note not found');
         }
         $row['parent_url'] = $config['site_root'] . $slug .'/';
     }

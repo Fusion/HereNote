@@ -66,3 +66,6 @@ RewriteRule ^([A-Za-z0-9-_]+)/?$ index.php?page=$1 [NC,L]
 # Util: reset display type if the home url is accessed
 # In index code, we make sure to avoid loops -- hopefully!
 RewriteRule ^/?$ index.php?setting=display&show=published [NC,L]
+
+# Missing page?
+ErrorDocument 404 /force_4xx

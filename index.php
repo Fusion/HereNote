@@ -174,6 +174,12 @@ function display_test($db, $template, $config, $user) {
 // A few utilities
 // ---------------------------------------------------------------------------
 
+class HttpException extends Exception {}
+
+function http_error($code=404, $msg="Page not found") {
+    throw new HttpException($msg, $code);
+}
+
 // This little backdoor has to disappear ASAP
 // UPDATE: gone!
 function attempt_auth($db, $template, $config, $user) {
@@ -253,67 +259,82 @@ if(!empty($_GET['setting'])) {
     update_setting($db, $template, $config, $user);
 }
 
-if(!empty($_GET['blog'])) {
-    display_blog($db, $template, $config, $user);
-}
-else if(!empty($_GET['blog_edit'])) {
-    display_blog_edit($db, $template, $config, $user);
-}
-else if(!empty($_GET['page'])) {
-    display_page($db, $template, $config, $user);
-}
-else if(!empty($_GET['page_edit'])) {
-    display_page_edit($db, $template, $config, $user);
-}
-else if(!empty($_GET['note'])) {
-    display_note($db, $template, $config, $user);
-}
-else if(!empty($_GET['note_edit'])) {
-    display_note_edit($db, $template, $config, $user);
-}
-else if(!empty($_GET['refdirect'])) {
-    display_refdirect($db, $template, $config, $user);
-}
-else if(!empty($_GET['asset'])) {
-    display_asset($db, $template, $config, $user);
-}
-else if(!empty($_GET['rewrite'])) {
-    display_rewrite($db, $template, $config, $user);
-}
-else if(!empty($_GET['search'])) {
-    display_search($db, $template, $config, $user);
-}
-else if(!empty($_GET['test'])) {
-    display_test($db, $template, $config, $user);
-}
-else if(!empty($_GET['ajax'])) {
-    ajax($db, $template, $config, $user);
-}
-else if(!empty($_GET['pages'])) {
-    display_pages($db, $template, $config, $user);
-}
-else if(!empty($_GET['notes'])) {
-    display_notes($db, $template, $config, $user);
-}
-else if(!empty($_GET['login'])) {
-    if($_GET['login'] == 'no') {
-        unset($_SESSION['user']);
-        $user->reset();
-        $_SESSION['user'] = $user;
-        $user->set_notification('Logged out', "You are now browsing as a guest.");
-        display_main($db, $template, $config, $user);
+try {
+    if(!empty($_GET['blog'])) {
+        display_blog($db, $template, $config, $user);
     }
-    else {
-        if(display_login($db, $template, $config, $user)) {
+    else if(!empty($_GET['blog_edit'])) {
+        display_blog_edit($db, $template, $config, $user);
+    }
+    else if(!empty($_GET['page'])) {
+        display_page($db, $template, $config, $user);
+    }
+    else if(!empty($_GET['page_edit'])) {
+        display_page_edit($db, $template, $config, $user);
+    }
+    else if(!empty($_GET['note'])) {
+        display_note($db, $template, $config, $user);
+    }
+    else if(!empty($_GET['note_edit'])) {
+        display_note_edit($db, $template, $config, $user);
+    }
+    else if(!empty($_GET['refdirect'])) {
+        display_refdirect($db, $template, $config, $user);
+    }
+    else if(!empty($_GET['asset'])) {
+        display_asset($db, $template, $config, $user);
+    }
+    else if(!empty($_GET['rewrite'])) {
+        display_rewrite($db, $template, $config, $user);
+    }
+    else if(!empty($_GET['search'])) {
+        display_search($db, $template, $config, $user);
+    }
+    else if(!empty($_GET['test'])) {
+        display_test($db, $template, $config, $user);
+    }
+    else if(!empty($_GET['ajax'])) {
+        ajax($db, $template, $config, $user);
+    }
+    else if(!empty($_GET['pages'])) {
+        display_pages($db, $template, $config, $user);
+    }
+    else if(!empty($_GET['notes'])) {
+        display_notes($db, $template, $config, $user);
+    }
+    else if(!empty($_GET['login'])) {
+        if($_GET['login'] == 'no') {
+            unset($_SESSION['user']);
+            $user->reset();
+            $_SESSION['user'] = $user;
+            $user->set_notification('Logged out', "You are now browsing as a guest.");
             display_main($db, $template, $config, $user);
         }
+        else {
+            if(display_login($db, $template, $config, $user)) {
+                display_main($db, $template, $config, $user);
+            }
+        }
+    }
+    else {
+        if(!empty($_GET['auth'])) {
+            attempt_auth($db, $template, $config, $user);
+        }
+        display_main($db, $template, $config, $user);
     }
 }
-else {
-    if(!empty($_GET['auth'])) {
-        attempt_auth($db, $template, $config, $user);
+catch(Exception $ex) {
+    if(is_a($ex, 'HttpException')) {
+        $template->view('4xx');
+        $template->header(false);
+        $template->footer(false);
+        $template->set('code', $ex->getCode());
+        $template->set('message', $ex->getMessage());
     }
-    display_main($db, $template, $config, $user);
+    else {
+        print "<pre>\n";
+        die($ex);
+    }
 }
 
 $template->set_user($user);
