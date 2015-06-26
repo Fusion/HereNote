@@ -8,7 +8,7 @@ if(!defined('RUNNING')) exit(-1);
 $obj = $db->escapeString($_GET['rewrite']);
 $row = $db->querySingle("SELECT new_path FROM mae_redirect WHERE old_path='/" . $obj . "'", true);
 if(empty($row)) {
-    die("Location Ooops. 404 and all that :(\n($obj)");
+    http_error(404, 'Path equivalence not found');
 }
 
 header("Location: " . $row['new_path']);
