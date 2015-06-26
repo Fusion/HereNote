@@ -30,8 +30,8 @@ body{background-color:#1a1c1e}.site-banner-media:before,.banner-images:before {b
 
     <script src='/thirdparty/modernizr/custom-modernizr.js'></script>
 
-    <link rel="stylesheet" href="/thirdparty/highlight/styles/agate.css" />
-    <script src="/thirdparty/highlight/highlight.pack.js"></script>
+    <link rel="stylesheet" href="/thirdparty/highlight/agate.min.css" />
+    <script src="/thirdparty/highlight/highlight.min.js"></script>
 
     <link rel="stylesheet" href="/thirdparty/notifyme/notifyme.css" />
     <Script src='/thirdparty/notifyme/notifyme.js'></script>
