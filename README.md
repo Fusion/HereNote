@@ -31,7 +31,7 @@ Good old way: get this script and all its dependencies by yourself. No fun.
 
 # Database
 
-Either rename `inc/dev.db.inc `to `dev.db` and place it where specified in config.php; or import `dev.db.schema.sql`
+Either rename `in/dev.db.inc `to `dev.db` and place it where specified in config.php; or import `dev.db.schema.sql`
 
 # INITIALIZING
 
