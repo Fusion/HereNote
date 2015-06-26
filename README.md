@@ -1,3 +1,5 @@
+v0.1
+
 # WHAT IT THIS?
 
 After several years of moving my blog from one engine to another, mostly out of curiosity, sometimes contributing to these engines one way or another (Wordpress plug ins or a teeny Mezzanine add-on), I realized several things:
