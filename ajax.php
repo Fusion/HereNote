@@ -17,6 +17,9 @@ else {
     case 'page':
         require 'ajax/page.php';
         break;
+    case 'pages':
+        require 'ajax/pages.php';
+        break;
     default:
         $success = false;
         $data = array();
@@ -24,3 +27,4 @@ else {
 }
 
 $response = array('success' => $success, 'data' => $data);
+echo json_encode($response);
