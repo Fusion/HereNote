@@ -58,6 +58,9 @@ RewriteRule ^blog/[0-9][0-9][0-9][0-9]/[0-9][0-9]/[0-9][0-9]/([A-Za-z0-9-_]+)/?$
 RewriteRule ^login/$ index.php?login=yes [NC,L]
 RewriteRule ^logout/$ index.php?login=no [NC,L]
 
+# Ajax call
+RewriteRule ^ajax/$ index.php?ajax=true [NC,L]
+
 # Paging for main display (blog posts)
 RewriteRule ^([0-9]+)$ index.php?offset=$1 [NC,L]
 # Whereas this is used to display pages as opposed to blog posts
