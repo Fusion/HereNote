@@ -22,12 +22,13 @@ if($this->get('edit_menu')) {
     </div>
 
 <script>
+var pub_status = <?=$this->get('status')?>;
 ctx_menu_click(function(action) {
     if(action == 'action_edit') {
         window.location = window.location + '/edit/';
     }
     else if(action == 'action_publish_toggle') {
-        if(<?=$this->get('status')?> == 2)
+        if(pub_status == 2)
             var ajax_action = 'unpublish';
         else
             var ajax_action = 'publish';
@@ -36,6 +37,8 @@ ctx_menu_click(function(action) {
             action: ajax_action,
             slug: '<?=$this->get('slug')?>'
             }, function(success, data) {
+                pub_status = data.data.status;
+                inform('Success', data.data.msg, 'success');
         });
     }
 });

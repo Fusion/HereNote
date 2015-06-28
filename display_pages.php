@@ -39,6 +39,14 @@ while($row = $pages_list->fetchArray()) {
     $pages[] = $page;
 }
 
+if($user->can_edit) {
+    $template->set('edit_menu',
+        array(
+            array('id' => 'action_sort', 'icon' => 'sort', 'text' => 'Sort Pages')
+        )
+    );
+}
+
 $template->set('is_home', true);
 $template->set('pages', $pages);
 $template->set('next_offset', $next_offset);

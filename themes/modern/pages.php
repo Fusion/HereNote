@@ -1,7 +1,20 @@
+<?php
+/* Not today buddy
+if($this->get('edit_menu')) {
+?>
+    <div style='position:relative; top:-1em; left:50%;'>
+<?php
+    $this->fragment('ctx_menu');
+?>
+    </div>
+<?php
+}
+*/
+?>
 <div id="posts" class="posts posts-list clearfix" itemscope itemtype="http://schema.org/ItemList">
 <?php
-    $pages = $this->get('pages');
-    foreach($pages as $page) {
+$pages = $this->get('pages');
+foreach($pages as $page) {
 ?>
 <article class="post-19 post type-post status-publish format-standard hentry category-uncategorized tag-boat tag-lake" itemscope itemprop="blogPost" itemtype="http://schema.org/BlogPosting">
 	<div class="entry-inner"><header class="entry-header"><h1 class="entry-title" itemprop="name"><a href="<?=$page->short_url?>" rel="bookmark"><?=$page->title?></a></h1></header><div class="entry-content" itemprop="description">
