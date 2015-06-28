@@ -44,13 +44,18 @@ function ctx_menu_toggleOptions(s) {
 }
 
 function ctx_menu_click(fn) {
-    jQuery('.selector li').click(function() {
+    jQuery('.selector li').unbind('click').click(function(e) {
+        e.stopPropagation();
+        e.preventDefault();
         var action = jQuery(this).find('input').attr('id');
+        ctx_menu_toggleOptions(jQuery(this).parent().parent());
         fn(action);
     });
 }
 
-jQuery('.selector button').click(function(e) {
+jQuery('.selector button').unbind('click').click(function(e) {
+    e.stopPropagation();
+    e.preventDefault();
     ctx_menu_toggleOptions(jQuery(this).parent());
 });
 </script>

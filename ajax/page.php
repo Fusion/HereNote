@@ -14,7 +14,10 @@ case 'publish':
         $new_status = ($_POST['action'] == 'unpublish' ? 1 : 2);
         $db->exec("UPDATE mae_posts SET status=" . $new_status . " WHERE section=2 AND slug='" . $slug ."'");
         $success = true;
-        $data = array();
+        $data = array(
+            'slug' => $slug,
+            'status' => $new_status,
+            'msg' => 'Page is now ' . ($new_status == 2 ? 'published' : 'in draft mode'));
     }
 break;
 default:
