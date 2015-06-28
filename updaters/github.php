@@ -15,7 +15,7 @@ while ($row = $result->fetchArray(SQLITE3_NUM)) {
   $existing_source_ids[$row[0]] = true;
 }
 
-$stmt = $db->prepare("INSERT INTO mae_posts(site_id,in_sitemap,user_id,status,gen_description,allow_comments,content_type,format_type,rating_sum,rating_count,rating_average,comments_count,keywords_string,source_id,slug,short_url,featured_image,title,content,description,publish_date,ref_url) VALUES(1,1,2,2,1,1,3,2,5,1,5,0,'',:sourceid,:slug,:shorturl,:featuredimage,:title,:content,:description,:publishdate,:refurl)");
+$stmt = $db->prepare("INSERT INTO mae_posts(site_id,section,in_sitemap,user_id,status,gen_description,allow_comments,content_type,format_type,rating_sum,rating_count,rating_average,comments_count,keywords_string,source_id,slug,short_url,featured_image,title,content,description,publish_date,ref_url) VALUES(1,1,1,2,2,1,1,3,2,5,1,5,0,'',:sourceid,:slug,:shorturl,:featuredimage,:title,:content,:description,:publishdate,:refurl)");
 
 $USER_ID = $config['updaters']['github']['user_id'];
 $API_URL = 'https://api.github.com/users/'.$USER_ID.'/events';
@@ -46,7 +46,7 @@ foreach ($feed as $item) {
 
   $source_id = $item->id;
   $slug = trim(substr(preg_replace('/\W+/i', '-', $item->payload->issue->title), 0, 199), '-');
-  $short_url = $config['site_root'].'/blob/'.$slug.'/';
+  $short_url = $config['site_root'].'blog/'.$slug.'/';
   $title = $item->payload->issue->title;
   $published = $item->payload->issue->created_at;
   $body = str_replace("\r\n", "\n", str_replace("\0",'',$item->payload->issue->body));
