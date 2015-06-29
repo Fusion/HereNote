@@ -2010,4 +2010,8 @@ section.notify {
     z-index: 999;
 }
 
+/* fix for dropzone */
+/* needs to be applied in dropzone.css itself: .dropzone { no min height; no padding } */
+/* .dropzone { border: 2px solid rgba(0, 0, 0, 0.3); background: white; } */
+
 /* END OF FILE */
