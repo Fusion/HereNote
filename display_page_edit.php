@@ -115,6 +115,7 @@ else {
     case 1:
         $template->view('page_rich_edit');
         require 'display_rich_editor.php';
+        require 'display_uploader.php';
         $template->set('slug', $slug);
         $template->set('parent_url', $row['parent_url']);
         $template->set('id', $row['id']);
@@ -124,7 +125,9 @@ else {
         $template->set('parent_id', $row['parent_id']);
         $template->set('parent_menu', $parent_menu);
         $template->set('editor', get_editor_html('editor', $row['content']));
+        $template->set('uploader', get_uploader_html());
         $template->header_append(get_editor_header());
+        $template->header_append(get_uploader_header());
     break;
     case 2:
         $template->view('page_markdown_edit');

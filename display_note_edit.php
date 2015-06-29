@@ -78,6 +78,7 @@ else {
     case 1:
         $template->view('note_rich_edit');
         require 'display_rich_editor.php';
+        require 'display_uploader.php';
         $template->set('slug', $slug);
         $template->set('parent_url', $row['parent_url']);
         $template->set('id', $row['id']);
@@ -85,7 +86,9 @@ else {
         $template->set('clean_title', isset($row['clean_title']) ? $row['clean_title'] : $row['title']);
         $template->set('title', $row['title']);
         $template->set('editor', get_editor_html('editor', $row['content']));
+        $template->set('uploader', get_uploader_html());
         $template->header_append(get_editor_header());
+        $template->header_append(get_uploader_header());
     break;
     case 2:
         $template->view('note_markdown_edit');

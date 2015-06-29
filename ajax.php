@@ -7,7 +7,12 @@ if(!isset($_SERVER['HTTP_X_REQUESTED_WITH']) || strtolower($_SERVER['HTTP_X_REQU
 }
 
 if(empty($_POST['route']) || empty($_POST['action'])) {
+    if(!empty($_FILES)) {
+        require 'ajax/upload.php';
+    }
+    else {
     // pass
+    }
 }
 else {
     switch($_POST['route']) {

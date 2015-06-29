@@ -55,3 +55,13 @@ Quill.registerModule('tbundo', function(quill, options) {
         }, this);
     });
 });
+
+function quill_remote_insert_image(url) {
+    // TODO Am I actually using a global (tarea)??? Yes, yes I am. Urg.
+    tarea.editor.focus();
+    var range = tarea.getSelection();
+    if(!range) {
+        return;
+    }
+    tarea.insertEmbed(range.start, 'image', url);
+}

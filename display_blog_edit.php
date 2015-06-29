@@ -88,6 +88,7 @@ else {
     case 1:
         $template->view('blog_rich_edit');
         require 'display_rich_editor.php';
+        require 'display_uploader.php';
         $template->set('slug', $slug);
         $template->set('parent_url', $row['parent_url']);
         $template->set('new', (!empty($row['new'])));
@@ -97,7 +98,9 @@ else {
         $template->set('description', $row['description']);
         $template->set('editor', get_editor_html('editor', $row['content']));
         $template->set('editor_d', get_editor_html('editor_d', $row['description']));
+        $template->set('uploader', get_uploader_html());
         $template->header_append(get_editor_header());
+        $template->header_append(get_uploader_header());
     break;
     case 2:
         $template->view('blog_markdown_edit');

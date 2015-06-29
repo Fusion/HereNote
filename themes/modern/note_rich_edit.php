@@ -7,12 +7,12 @@
 </article>
 
 <style>
-#display_more-check {
+.display_more-check {
     display: none;
 }
 
 <?php if($this->get('new') !== true) { ?>
-#display_more-check:checked ~ div {
+.display_more-check:checked ~ div {
     opacity: 1;
     max-height: 100%;
     -webkit-transform: translate3d(0, 0, 0);
@@ -42,12 +42,20 @@
     </div>
     <div> &nbsp; </div>
     <div>
-        <input type="checkbox" name="display_more" id="display_more-check" />
-        <label for="display_more-check">Edit Title</label>
-        <div class="display_more-content">
+        <div>
+            <input type="checkbox" name="display_upload" id="display_upload-check" class="display_more-check" />
+            <label for="display_upload-check">Upload Images</label>
+            <?=$this->get('uploader')?>
             <p></p>
-            <h3 class="comment-reply-title">Page Title</h3>
-            <input style="width:100%" name="title" id="note_title" value="<?=$this->get('title')?>" />
+        </div>
+        <div>
+            <input type="checkbox" name="display_more" id="display_more-check" class="display_more-check" />
+            <label for="display_more-check">Edit Title</label>
+            <div class="display_more-content">
+                <p></p>
+                <h3 class="comment-reply-title">Page Title</h3>
+                <input style="width:100%" name="title" id="note_title" value="<?=$this->get('title')?>" />
+            </div>
         </div>
     </div>
     <div> &nbsp; </div>
