@@ -70,7 +70,7 @@ if($this->get('is_home')) {
 
 <header id="masthead" class="site-header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
 
-<nav id="site-navigation" class="main-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement"><span class="screen-reader-text"><?=$this->site_title?>: Navigation</span><a class="skip-link screen-reader-text" href="#content">Skip to content</a><div class="main-navigation-inner"><div class="menu"><ul>
+<nav id="site-navigation" class="main-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement"><span class="screen-reader-text"><?=$this->site_name?>: Navigation</span><a class="skip-link screen-reader-text" href="#content">Skip to content</a><div class="main-navigation-inner"><div class="menu"><ul>
 <li class="page_item page-item-2">
 <a href="/">Home</a>
 </li>
@@ -111,7 +111,7 @@ if($this->get('is_home')) {
 	<label for="search-field" class="screen-reader-text">Search</label>
 	<input type="search" value="" placeholder="Search field: type and press enter" name="q" class="search-field" id="search-field" />
 </form></div></div><button id="menu-toggle" class="menu-toggle" aria-controls="site-navigation" aria-expanded="false">Menu</button></nav>
-<div class="site-branding"><h1 class="site-title logo type-text"><a href="<?=$this->site_root?>" title="<?=$this->site_title?> Home"><span class="text-logo"><?=$this->site_name?></span></a></h1><h2 class="site-description"><?=$this->site_desc?></h2></div>
+<div class="site-branding"><h1 class="site-title logo type-text"><a href="<?=$this->site_root?>" title="<?=$this->site_name?> Home"><span class="text-logo"><?=$this->site_name?></span></a></h1><h2 class="site-description"><?=$this->site_desc?></h2></div>
 <div id="site-banner" class="site-banner no-slider">
 
 	<div class="site-banner-inner">

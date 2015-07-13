@@ -34,17 +34,17 @@ while($row = $posts_list->fetchArray()) {
     $publish_date = strtotime($row['publish_date']);
     $post->formatted_publish_date = format_ago($publish_date);
     switch($row['content_type']) {
-        case 1:
+        case $config['content_type']['blog']:
             $post->type_thumbnail = '/assets/img/blog_logo.jpg';
         break;
-        case 2:
+        case $config['content_type']['g+']:
             $post->type_thumbnail = '/assets/img/google_plus.png';
         break;
-        case 3:
+        case $config['content_type']['github']:
             $post->type_thumbnail = '/assets/img/github.png';
         break;
     }
-    $post->short_url = $row['short_url'];
+    $post->short_url = dynurl($row['short_url']);
     $post->title = $row['title'];
     $post->featured_image = $row['featured_image'];
     $post->description = $row['description'];

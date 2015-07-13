@@ -1,20 +1,12 @@
 <?php
 
 /*
- * description: displayed on main page
- * rest: displayed in blog page
- *
- * object->objectType: note
- * object->attachments[]->objectType: article, photo, album
- *
- * when article:
- * object->attachments[]: displayName, url
- *
- * when photo:
- * object->attachments[]: displayName, url, image: { url, type }, fullImage: { url, type, width, height }
- * 
- * when album:
- * object->attachments[]->thumbnails: url, description, image: { url, type, height, width }
+ * description: item->description or item->name (latter needs cleanup)
+ * content: item->message // not always present... if it is a link then it's a story and needs to be assembled...avoid stories?
+ ( we also have picture and icon and link...
+ * Important: check that item->from->id == our id! If note it's stuff posted by others
+ * item->created_time
+ * check item->is_hidden
  */
 
 error_reporting(E_ALL);
@@ -24,23 +16,31 @@ $db = new SQLite3($config['db_file']);
 
 // First, load all source ids so that we do not have duplicates
 $existing_source_ids = array();
-$result = $db->query("SELECT source_id FROM mae_posts WHERE content_type=" . $config['content_type']['g+']);
+$result = $db->query("SELECT source_id FROM mae_posts WHERE content_type=" . $config['content_type']['facebook']);
 while ($row = $result->fetchArray(SQLITE3_NUM)) {
   $existing_source_ids[$row[0]] = true;
 }
 
-$stmt = $db->prepare("INSERT INTO mae_posts(site_id,section,in_sitemap,user_id,status,gen_description,allow_comments,content_type,format_type,rating_sum,rating_count,rating_average,comments_count,keywords_string,source_id,slug,short_url,featured_image,title,content,description,publish_date,ref_url) VALUES(1,1,1,2,2,1,1,".$config['content_type']['g+'].",1,5,1,5,0,'',:sourceid,:slug,:shorturl,:featuredimage,:title,:content,:description,:publishdate,:refurl)");
+$stmt = $db->prepare("INSERT INTO mae_posts(site_id,section,in_sitemap,user_id,status,gen_description,allow_comments,content_type,format_type,rating_sum,rating_count,rating_average,comments_count,keywords_string,source_id,slug,short_url,featured_image,title,content,description,publish_date,ref_url) VALUES(1,1,1,2,2,1,1,".$config['content_type']['facebook'].",1,5,1,5,0,'',:sourceid,:slug,:shorturl,:featuredimage,:title,:content,:description,:publishdate,:refurl)");
 
-$API_KEY = $config['updaters']['g+']['api_key'];
-$USER_ID = $config['updaters']['g+']['user_id'];
-$API_URL = 'https://www.googleapis.com/plus/v1/people/' . $USER_ID . '/activities/public?key=' . $API_KEY;
+$ACCESS_TOKEN = $config['updaters']['facebook']['access_token'];
+$USER_ID      = $config['updaters']['facebook']['user_id'];
+
+$API_URL = 'https://graph.facebook.com/' . $USER_ID . '/feed?access_token=' . $ACCESS_TOKEN;
 
 $MAX_ITEMS = 500;
 
 $feed = json_decode(file_get_contents($API_URL));
 
+foreach ($feed->data as $data) {
+    print_r($data);
+    break;
+}
+
+exit;
+
 $item_ctr = 0;
-foreach ($feed->items as $item) {
+foreach ($feed->data as $item) {
   if(isset($existing_source_ids[$item->id])) {
     continue;
   }

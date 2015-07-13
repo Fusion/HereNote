@@ -19,6 +19,16 @@ if(!empty($argv)) {
     );
 }
 
+if (isset($_SERVER['HTTPS']) && strtoupper($_SERVER['HTTPS'])=='ON') {
+    $config['proto'] = 'https';
+}
+
+$allheaders = getallheaders();
+if(isset($allheaders['X-Forwarded-Proto']) && $allheaders['X-Forwarded-Proto'] == 'https') {
+    $config['site_root'] = str_replace('http://', 'https://', $config['site_root']);
+    $config['proto'] = 'https';
+}
+
 // On demand theme preview
 // The cookie is here to propagate that value
 // to redirected assets
@@ -58,6 +68,18 @@ function format_ago($timestamp) {
 // Used to sanitize cookies if necessary
 function alphanum_only($txt) {
     return preg_replace('/[^\da-z]/i', '', $txt);
+}
+
+// Return dynamic version of URL based on current proto
+function dynurl($url) {
+global $config;
+
+    if($config['proto'] != 'http') {
+        if(strncmp($url, $config['site_root'], strlen($config['site_root']))) {
+            return str_replace('http://', $config['proto'] . '://', $url);
+        }
+    }
+    return $url;
 }
 
 // ---------------------------------------------------------------------------

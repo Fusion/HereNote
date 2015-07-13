@@ -45,11 +45,11 @@ else {
 }
 
 switch($row['content_type']) {
-case 2:
+case $config['content_type']['g+']:
     $content_logo = '/assets/img/google_plus.png';
     $content_header = 'From my G+ Feed:';
 break;
-case 3:
+case $config['content_type']['github']:
     $content_logo = '/assets/img/github.png';
     $content_header = 'From my Github Feed:';
 break;
