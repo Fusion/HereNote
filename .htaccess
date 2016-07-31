@@ -54,6 +54,9 @@ RewriteRule ^search/(.*)$ index.php?search=$1 [L,NC]
 RewriteRule ^([0-9][0-9][0-9][0-9]/.*)/?$ index.php?rewrite=$1 [NC,L]
 RewriteRule ^blog/[0-9][0-9][0-9][0-9]/[0-9][0-9]/[0-9][0-9]/([A-Za-z0-9-_]+)/?$ /blog/$1/ [NC,L]
 
+# Additional rewrite rules for compatibility: assets
+RewriteRule ^wp-content/uploads/[0-9][0-9][0-9][0-9]/[0-9][0-9]/([A-Za-z0-9-_\.]+)$ /static/media/uploads/CFR/$1 [NC,L]
+
 # Actions
 RewriteRule ^login/$ index.php?login=yes [NC,L]
 RewriteRule ^logout/$ index.php?login=no [NC,L]
