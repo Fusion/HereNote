@@ -15,7 +15,7 @@ if(!empty($_POST['LogIn'])) {
     $stmt->bindValue(':login', $_POST['c_username']);
     $res = $stmt->execute();
     $row = $res->fetchArray();
-    if(!strcmp($row['password'], Util::get_password_with_salt_hash($_POST['c_password'], $row['salt']))) {
+    if($row !== false && !strcmp($row['password'], Util::get_password_with_salt_hash($_POST['c_password'], $row['salt']))) {
         $loggedIn = true;
         $user->auth($row['login'], $row['realname'], $row['can_edit']);
         $_SESSION['user'] = $user;
